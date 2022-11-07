@@ -45,8 +45,7 @@ class AdminController extends Controller
 		return view('admin.registrasi.tambah-user', compact('level'));
 	}
 
-    public function simpan_user(request $req)
-	{
+    public function simpan_user(request $req){
         // dd($req->all());
 		$nik = $req->input('nik');
 
