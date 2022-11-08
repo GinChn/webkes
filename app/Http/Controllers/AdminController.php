@@ -19,6 +19,10 @@ class AdminController extends Controller
     public function profile(){
         return view('admin.profile.index');
     }
+
+    public function edit_profile(){
+        return view('admin.profile.edit-profile');
+    }
     //========================================================//
 
     //======================karyawan==========================//
@@ -32,6 +36,12 @@ class AdminController extends Controller
         return view('admin.laporan.index');
     }
     //========================================================//
+
+        //======================BMI===========================//
+        public function bmi(){
+            return view('admin.bmi.index');
+        }
+        //========================================================//
 
     //=====================registrasi=========================//
     public function registrasi(){
