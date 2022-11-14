@@ -34,7 +34,7 @@
                             <tr>
                                 <td>{{ $item->nik }}</td>
                                 <td>{{ $item->nama }}</td>
-                                <td>{{ $item->id_level }}</td>
+                                <td>{{ $item->level_name }}</td>
                                 <td>
                                     <a href="#" class="btn-sm btn-danger">Hapus</a>
                                 </td>

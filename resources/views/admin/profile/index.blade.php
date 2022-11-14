@@ -18,17 +18,9 @@
             <div class="card card-primary card-outline">
                 <div class="card-body box-profile">
                     <div class="text-center">
-                        <img class="profile-user-img img-fluid img-circle" src="/assets/dist/img/user4-128x128.jpg" alt="User profile picture">
+                        <img class="profile-user-img img-fluid img-circle" src="/AdminLTE/dist/img/user4-128x128.jpg" alt="User profile picture">
                     </div>
-                    <h3 class="profile-username text-center mb-3 mt-3">Nina Mcintire</h3>
-                    <ul class="list-group list-group-unbordered mb-3">
-                        <li class="list-group-item">
-                            <b>Berat Badan</b> <a class="float-right">1,322</a>
-                        </li>
-                        <li class="list-group-item">
-                            <b>Tinggi Badan</b> <a class="float-right">543</a>
-                        </li>
-                    </ul>
+                    <h3 class="profile-username text-center mb-3 mt-3">{{ $profile->nama }}</h3>
                     <a href="/edit-profile" class="btn btn-primary btn-block"><b>Edit</b></a>
                 </div>
             </div>
@@ -40,19 +32,19 @@
             </div>
             <div class="card-body">
                 <strong>NIK</strong>
-                <p class="text-muted">B.S. in Computer Science from the University of Tennessee at Knoxville</p>
+                <p class="text-muted">{{ $profile->nik }}</p>
                 <hr>
                 <strong>Nama Lengkap</strong>
-                <p class="text-muted">B.S. in Computer Science from the University of Tennessee at Knoxville</p>
+                <p class="text-muted">{{ $profile->nama }}</p>
                 <hr>
                 <strong>Jenis Kelamin</strong>
-                <p class="text-muted">Malibu, California</p>
+                <p class="text-muted">{{ $profile->jenis_kelamin }}</p>
                 <hr>
                 <strong>Tanggal Lahir</strong>
-                <p class="text-muted">Malibu, California</p>
+                <p class="text-muted">{{ $profile->tgl_lahir }}</p>
                 <hr>
                 <strong>Usia</strong>
-                <p class="text-muted">Malibu, California</p>
+                <p class="text-muted">{{ $profile->usia }}</p>
             </div>
         </div>
       </div>

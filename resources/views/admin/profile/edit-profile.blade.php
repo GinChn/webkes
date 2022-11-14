@@ -1,7 +1,8 @@
 @extends('admin.layout')
 
 @section('content')
-<link rel="stylesheet" href="./assets/plugins/daterangepicker/daterangepicker.css">
+    <!-- daterange picker -->
+    <link rel="stylesheet" href="{{ asset('AdminLTE/plugins/daterangepicker/daterangepicker.css') }}">
 
 <div class="content-header">
     <div class="container-fluid">
@@ -20,56 +21,59 @@
                 <div class="card-header">
                     <h3 class="card-title">Edit Profile</h3>
                 </div>
-                <form>
+                <form method="POST">
+                    {{ csrf_field() }}
                     <div class="card-body">
                         <div class="form-group">
-                            <label for="exampleInputEmail1">NIK</label>
-                            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Masukkan NIK">
+                            <label>NIK</label>
+                            <input type="text" name="nik" class="form-control"  placeholder="Masukkan NIK" value="{{ $profile->nik }}">
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputPassword1">Nama Lengkap</label>
-                            <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Masukkan Nama">
+                            <label>Nama Lengkap</label>
+                            <input type="text" name="nama" class="form-control" placeholder="Masukkan Nama" value="{{ $profile->nama }}">
                         </div>
                         <div class="form-group">
-                            <label for="exampleSelectRounded0">Jenis Kelamin</label>
-                            <select class="custom-select rounded-0" id="exampleSelectRounded0">
+                            <label>Jenis Kelamin</label>
+                            <select class="custom-select rounded-0" name="jk">
                                 <option>Pilih Jenis Kelamin</option>
-                                <option>Perempuan</option>
-                                <option>Laki-laki</option>
+                                <option @if($profile->jenis_kelamin == 'Perempuan') selected @endif>Perempuan</option>
+                                <option @if($profile->jenis_kelamin == 'Laki-laki') selected @endif>Laki-laki</option>
                             </select>
                         </div>
                         <div class="form-group">
                             <label>Tanggal Lahir</label>
-                            <div class="input-group date" id="reservationdate" data-target-input="nearest">
-                                <input type="text" class="form-control datetimepicker-input" data-target="#reservationdate" placeholder="Masukkan Tanggal Lahir">
-                                <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">
-                                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-                                </div>
+                            <div class="input-group">
+                                <input type="date" name="tl" class="form-control" data-inputmask-alias="datetime" data-inputmask-inputformat="dd/mm/yyyy" data-mask value="{{ $profile->tgl_lahir }}">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Usia</label>
-                            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Masukkan Usia">
+                            <input type="text" name="usia" class="form-control" placeholder="Masukkan Usia" value="{{ $profile->usia }}">
                         </div>
                     </div>
                     <div class="card-footer">
                         <button type="submit" class="btn btn-primary">Simpan</button>
-                        <button type="submit" class="btn btn-danger">Batal</button>
+                        <a href="/profile" class="btn btn-danger">Batal</a>
                     </div>
                 </form>
             </div>
         </div>
     </div>
 </div>
-
-<script src="./assets/plugins/daterangepicker/daterangepicker.js"></script>
+<!-- InputMask -->
+<script src="{{ asset('AdminLTE/plugins/moment/moment.min.js') }}"></script>
+<script src="{{ asset('AdminLTE/plugins/inputmask/jquery.inputmask.min.js') }}"></script>
+<!-- date-range-picker -->
+<script src="{{ asset('AdminLTE/plugins/daterangepicker/daterangepicker.js') }}"></script>
 <script>
-    $(function () {
-        $('#datemask').inputmask('dd/mm/yyyy', { 'placeholder': 'dd/mm/yyyy' })
-        $('#reservationdate').datetimepicker({
-            format: 'L'
-        });
+$(function () {
+    //Datemask dd/mm/yyyy
+    $('#datemask').inputmask('dd/mm/yyyy', { 'placeholder': 'dd/mm/yyyy' })
+    //Datemask2 mm/dd/yyyy
+    $('#datemask2').inputmask('mm/dd/yyyy', { 'placeholder': 'mm/dd/yyyy' })
+    //Money Euro
+    $('[data-mask]').inputmask()
     })
-    </script>
+</script>
 
 @endsection

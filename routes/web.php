@@ -15,17 +15,23 @@ Route::post('/login', 'LoginController@simpan_login');
 
 Route::get('/logout', 'LoginController@logout');
 
-//Route::group(['middleware' => 'login'], function() {
-    Route::get('/', 'AdminController@dashboard');
-    Route::get('/profile', 'AdminController@profile');
-    Route::get('/edit-profile', 'AdminController@edit_profile');
-    Route::get('/data-karyawan', 'AdminController@karyawan');
-    Route::get('/data-laporan', 'AdminController@laporan');
-    Route::get('/registrasi', 'AdminController@registrasi');
-    Route::get('/tambah-user', 'AdminController@tambah_user');
-    Route::post('/tambah-user', 'AdminController@simpan_user');
-    Route::get('/bmi', 'AdminController@bmi');
-//});
+Route::group(['middleware' => 'login'], function() {
+    Route::get('/', 'DashboardController@dashboard');
+
+    Route::get('/profile', 'ProfileController@profile');
+    Route::get('/edit-profile', 'ProfileController@edit_profile');
+    Route::post('/edit-profile', 'ProfileController@simpan_profile');
+
+    Route::get('/data-karyawan', 'KaryawanController@karyawan');
+
+    Route::get('/data-laporan', 'LaporanController@laporan');
+
+    Route::get('/registrasi', 'RegistrasiController@registrasi');
+    Route::get('/tambah-user', 'RegistrasiController@tambah_user');
+    Route::post('/tambah-user', 'RegistrasiController@simpan_user');
+    
+    Route::get('/bmi', 'BmiController@bmi');
+});
 
 // Route::get('/dashboard', 'UserController@dashboard');
 // Route::get('/profile', 'UserController@profile');
