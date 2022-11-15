@@ -37,4 +37,10 @@ class RegistrasiController extends Controller
 
         return redirect('/registrasi');
 	}
+
+    public function hapus_user($nik){
+        $data = RegistrasiModel::find($id);
+        $data->delete();
+        return redirect('/registrasi');
+    }
 }

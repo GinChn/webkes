@@ -20,7 +20,7 @@
                     <a href="/tambah-user" class="btn btn-success">Tambah User</a>
                 </div>
                 <div class="card-body">
-                    <table id="example1" class="table table-bordered table-striped">
+                    <table id="registrasi" class="table table-bordered table-striped">
                         <thead>
                             <tr>
                                 <th>NIK</th>
@@ -36,7 +36,7 @@
                                 <td>{{ $item->nama }}</td>
                                 <td>{{ $item->level_name }}</td>
                                 <td>
-                                    <a href="#" class="btn-sm btn-danger">Hapus</a>
+                                    <a href="/hapus-user" class="btn-sm btn-danger">Hapus</a>
                                 </td>
                             </tr>
                             @endforeach

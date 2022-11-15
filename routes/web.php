@@ -29,6 +29,7 @@ Route::group(['middleware' => 'login'], function() {
     Route::get('/registrasi', 'RegistrasiController@registrasi');
     Route::get('/tambah-user', 'RegistrasiController@tambah_user');
     Route::post('/tambah-user', 'RegistrasiController@simpan_user');
+    Route::get('/hapus-user', 'RegistrasiController@hapus_user');
     
     Route::get('/bmi', 'BmiController@bmi');
 });
