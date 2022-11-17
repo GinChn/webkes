@@ -20,8 +20,4 @@ class RegistrasiModel extends Model
             'created_at' => date('Y-m-d H:i:s')
         ]);
     }
-
-    public static function hapus_user(){
-        DB::table('users')->where('nik')->delete();
-    }
 }

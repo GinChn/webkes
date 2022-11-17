@@ -26,31 +26,29 @@
             </div>
         </div>
         <div class="col-md-9">
-        <div class="card card-primary">
-            <div class="card-header">
-                <h3 class="card-title">Data Profile</h3>
-            </div>
-            <div class="card-body">
-                <strong>NIK</strong>
-                <p class="text-muted">{{ $profile->nik }}</p>
-                <hr>
-                <strong>Nama Lengkap</strong>
-                <p class="text-muted">{{ $profile->nama }}</p>
-                <hr>
-                <strong>Jenis Kelamin</strong>
-                <p class="text-muted">{{ $profile->jenis_kelamin }}</p>
-                <hr>
-                <strong>Tanggal Lahir</strong>
-                <p class="text-muted">{{ $profile->tgl_lahir }}</p>
-                <hr>
-                <strong>Usia</strong>
-                <p class="text-muted">{{ $profile->usia }}</p>
+            <div class="card card-primary">
+                <div class="card-header">
+                    <h3 class="card-title">Data Profile</h3>
+                </div>
+                <div class="card-body">
+                    <strong>NIK</strong>
+                    <p class="text-muted">{{ $profile->nik }}</p>
+                    <hr>
+                    <strong>Nama Lengkap</strong>
+                    <p class="text-muted">{{ $profile->nama }}</p>
+                    <hr>
+                    <strong>Jenis Kelamin</strong>
+                    <p class="text-muted">{{ $profile->jenis_kelamin }}</p>
+                    <hr>
+                    <strong>Tanggal Lahir</strong>
+                    <p class="text-muted">{{ $profile->tgl_lahir }}</p>
+                    <hr>
+                    <strong>Usia</strong>
+                    <p class="text-muted">{{ $profile->usia }}</p>
+                </div>
             </div>
         </div>
-      </div>
-      <!-- /.col -->
     </div>
-    <!-- /.row -->
-  </div>
+</div>
 
 @endsection

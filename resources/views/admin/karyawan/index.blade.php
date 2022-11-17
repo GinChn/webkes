@@ -32,15 +32,21 @@
                             <tr>
                                 <th>NIK</th>
                                 <th>Nama</th>
-                                <th>Aksi</th>
+                                <th>Jenis Kelamin</th>
+                                <th>Tanggal Lahir</th>
+                                <th>Usia</th>
                             </tr>
                         </thead>
                         <tbody>
+                            @foreach ($data as $kry)
                             <tr>
-                                <td>Trident</td>
-                                <td>InternetExplorer 4.0</td>
-                                <td>Win 95+</td>
+                                <td>{{ $kry->nik }}</td>
+                                <td>{{ $kry->nama }}</td>
+                                <td>{{ $kry->jenis_kelamin }}</td>
+                                <td>{{ $kry->tgl_lahir }}</td>
+                                <td>{{ $kry->usia }} Tahun</td>
                             </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

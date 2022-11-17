@@ -36,7 +36,7 @@
                                 <td>{{ $item->nama }}</td>
                                 <td>{{ $item->level_name }}</td>
                                 <td>
-                                    <a href="/hapus-user" class="btn-sm btn-danger">Hapus</a>
+                                    <a href="/hapus-user/{{ $item->nik }}" class="btn-sm btn-danger">Hapus</a>
                                 </td>
                             </tr>
                             @endforeach

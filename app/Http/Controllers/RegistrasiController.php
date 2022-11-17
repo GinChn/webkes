@@ -39,8 +39,7 @@ class RegistrasiController extends Controller
 	}
 
     public function hapus_user($nik){
-        $data = RegistrasiModel::find($id);
-        $data->delete();
+        DB::table('users')->where('nik', $nik)->delete();
         return redirect('/registrasi');
     }
 }

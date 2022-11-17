@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\DB;
 
 class KaryawanController extends Controller
 {
     public function karyawan(){
-        return view('admin.karyawan.index');
+        $data = DB::table('users')->get();
+        return view('admin.karyawan.index', compact('data'));
     }
 }
