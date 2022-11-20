@@ -9,6 +9,8 @@ class KaryawanController extends Controller
 {
     public function karyawan(){
         $data = DB::table('users')->get();
-        return view('admin.karyawan.index', compact('data'));
+        return view('admin.karyawan.index', compact('data'), [
+            "title" => "Data Karyawan"
+        ]);
     }
 }

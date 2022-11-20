@@ -10,12 +10,16 @@ class ProfileController extends Controller
 {
     public function profile(){
         $profile = ProfileModel::detail_profile(session('auth')->nik);
-        return view('admin.profile.index', compact('profile'));
+        return view('admin.profile.index', compact('profile'), [
+            "title" => "Profile"
+        ]);
     }
 
     public function edit_profile(){
         $profile = ProfileModel::detail_profile(session('auth')->nik);
-        return view('admin.profile.edit-profile', compact('profile'));
+        return view('admin.profile.edit-profile', compact('profile'), [
+            "title" => "Edit Profile"
+        ]);
     }
 
     public function simpan_profile(Request $req)

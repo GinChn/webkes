@@ -13,7 +13,9 @@ date_default_timezone_set('Asia/Makassar');
 class LoginController extends Controller
 {
     public function login(){
-        return view('login');
+        return view('login', [
+            "title" => "Login"
+        ]);
     }
 
     public function logout(){

@@ -8,6 +8,8 @@ use Illuminate\Routing\Controller;
 class DashboardController extends Controller
 {
     public function dashboard(){
-        return view('admin.dashboard.index');
+        return view('admin.dashboard.index', [
+            "title" => "Dashboard"
+        ]);
     }
 }

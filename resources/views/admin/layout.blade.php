@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AdminLTE 3 | Dashboard</title>
+  <title>TAKES | {{ $title }}</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -81,7 +81,7 @@
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <li class="nav-header">MENU</li>
                 <li class="nav-item">
-                    <a href="/" class="nav-link active">
+                    <a href="/" class="nav-link {{ ($title === "Dashboard") ? 'active' : '' }}">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
                             Dashboard
@@ -89,7 +89,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="/data-karyawan" class="nav-link">
+                    <a href="/data-karyawan" class="nav-link {{ ($title === "Data Karyawan") ? 'active' : '' }}">
                         <i class="nav-icon fas fa-user"></i>
                         <p>
                             Data Karyawan
@@ -97,7 +97,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="/data-laporan" class="nav-link">
+                    <a href="/data-laporan" class="nav-link {{ ($title === "Data Laporan") ? 'active' : '' }}">
                         <i class="nav-icon fas fa-clipboard-list"></i>
                         <p>
                             Data Laporan
@@ -105,7 +105,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="/bmi" class="nav-link">
+                    <a href="/bmi" class="nav-link {{ ($title === "BMI") ? 'active' : '' }}">
                         <i class="nav-icon fas fa-book-medical"></i>
                         <p>
                             BMI
@@ -113,7 +113,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="/registrasi" class="nav-link">
+                    <a href="/registrasi" class="nav-link {{ ($title === "Registrasi") ? 'active' : '' }}">
                         <i class="nav-icon fas fa-user-plus"></i>
                         <p>
                             Registrasi

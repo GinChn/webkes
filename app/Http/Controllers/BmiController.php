@@ -8,6 +8,8 @@ use Illuminate\Routing\Controller;
 class BmiController extends Controller
 {
     public function bmi(){
-        return view('admin.bmi.index');
+        return view('admin.bmi.index', [
+            "title" => "BMI"
+        ]);
     }
 }

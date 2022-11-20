@@ -8,6 +8,8 @@ use Illuminate\Routing\Controller;
 class LaporanController extends Controller
 {
     public function laporan(){
-        return view('admin.laporan.index');
+        return view('admin.laporan.index', [
+            "title" => "Data Laporan"
+        ]);
     }
 }

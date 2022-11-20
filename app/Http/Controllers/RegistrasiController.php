@@ -14,13 +14,17 @@ class RegistrasiController extends Controller
         ->join('level', 'users.id_level', '=', 'level.id_level')
         ->select('users.nik', 'users.nama', 'level.level_name')
         ->get();
-        return view('admin.registrasi.index', compact('user'));
+        return view('admin.registrasi.index', compact('user'), [
+            "title" => "Registrasi"
+        ]);
     }
 
 	public function tambah_user()
 	{
         $level = DB::table('level')->get();
-		return view('admin.registrasi.tambah-user', compact('level'));
+		return view('admin.registrasi.tambah-user', compact('level'), [
+            "title" => "Tambah User"
+        ]);
 	}
 
     public function simpan_user(request $req){
