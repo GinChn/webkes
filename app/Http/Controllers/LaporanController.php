@@ -9,7 +9,8 @@ use DB;
 
 class LaporanController extends Controller
 {
-    public function laporan(){
+    public function laporan()
+    {
         return view('admin.laporan.index', [
             "title" => "Data Laporan"
         ]);
@@ -18,7 +19,9 @@ class LaporanController extends Controller
     public function inputlaporan()
     {
         $laporan = LaporanModel::index();
-        return view('admin.laporan.input-laporan');
+        return view('admin.laporan.input-laporan', [
+            "title" => "Tambah Laporan"
+        ]);
     }
 
     public function simpanlaporan(request $req)
