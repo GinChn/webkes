@@ -15,7 +15,7 @@ Route::post('/login', 'LoginController@simpan_login');
 
 Route::get('/logout', 'LoginController@logout');
 
-Route::group(['middleware' => 'login'], function() {
+Route::group(['middleware' => 'login'], function () {
     Route::get('/', 'DashboardController@dashboard');
 
     Route::get('/profile', 'ProfileController@profile');
@@ -25,6 +25,8 @@ Route::group(['middleware' => 'login'], function() {
     Route::get('/data-karyawan', 'KaryawanController@karyawan');
 
     Route::get('/data-laporan', 'LaporanController@laporan');
+    Route::get('/input-laporan', 'LaporanController@inputlaporan');
+    Route::post('/input-laporan', 'LaporanController@simpanlaporan');
 
     Route::get('/registrasi', 'RegistrasiController@registrasi');
     Route::get('/tambah-user', 'RegistrasiController@tambah_user');

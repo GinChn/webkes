@@ -9,31 +9,28 @@ use App\DA\RegistrasiModel;
 
 class RegistrasiController extends Controller
 {
-    public function registrasi(){
+    public function registrasi()
+    {
         $user = DB::table('users')
-        ->join('level', 'users.id_level', '=', 'level.id_level')
-        ->select('users.nik', 'users.nama', 'level.level_name')
-        ->get();
-        return view('admin.registrasi.index', compact('user'), [
-            "title" => "Registrasi"
-        ]);
+            ->join('level', 'users.id_level', '=', 'level.id_level')
+            ->select('users.nik', 'users.nama', 'level.level_name')
+            ->get();
+        return view('admin.registrasi.index', compact('user'));
     }
 
-	public function tambah_user()
-	{
+    public function tambah_user()
+    {
         $level = DB::table('level')->get();
-		return view('admin.registrasi.tambah-user', compact('level'), [
-            "title" => "Tambah User"
-        ]);
+		return view('admin.registrasi.tambah-user', compact('level'));
 	}
 
-    public function simpan_user(request $req){
+    public function simpan_user(request $req)
+    {
         // dd($req->all());
-		$nik = $req->input('nik');
+        $nik = $req->input('nik');
 
         $check = DB::table('users')->where('nik', $nik)->first();
-        if ($check)
-        {
+        if ($check) {
             return redirect('/tambah-user');
         }
 
@@ -43,7 +40,8 @@ class RegistrasiController extends Controller
 	}
 
     public function hapus_user($nik){
-        DB::table('users')->where('nik', $nik)->delete();
+        $data = RegistrasiModel::find($id);
+        $data->delete();
         return redirect('/registrasi');
     }
 }
