@@ -16,7 +16,8 @@ Route::post('/login', 'LoginController@simpan_login');
 Route::get('/logout', 'LoginController@logout');
 
 Route::group(['middleware' => 'login'], function () {
-    Route::get('/', 'DashboardController@dashboard');
+    Route::group(['middleware' => 'cekrole:Admin,User'], function (){
+        Route::get('/', 'DashboardController@dashboard');
 
     Route::get('/profile', 'ProfileController@profile');
     Route::get('/edit-profile', 'ProfileController@edit_profile');
@@ -34,6 +35,8 @@ Route::group(['middleware' => 'login'], function () {
     Route::get('/hapus-user/{nik}', 'RegistrasiController@hapus_user');
     
     Route::get('/bmi', 'BmiController@bmi');
+    });
+    
 });
 
 // Route::get('/dashboard', 'UserController@dashboard');
