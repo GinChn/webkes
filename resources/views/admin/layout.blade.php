@@ -47,9 +47,8 @@
                     <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i
                             class="fas fa-bars"></i></a>
                 </li>
-                <li class="user-footer">
-                    <a href="/admin/profile" class="btn btn-default btn-flat">Profile</a>
-                    <a href="/logout" class="btn btn-default btn-flat float-right">Logout</a>
+                <li class="nav-item d-none d-sm-inline-block">
+                    <a href="/" class="nav-link">Home</a>
                 </li>
             </ul>
             <ul class="navbar-nav ml-auto">
@@ -68,42 +67,10 @@
                             </p>
                         </li>
                         <li class="user-footer">
-                            <a href="/profile" class="btn btn-default btn-flat">Profile</a>
+                            <a href="/admin/profile" class="btn btn-default btn-flat">Profile</a>
                             <a href="/logout" class="btn btn-default btn-flat float-right">Logout</a>
                         </li>
                     </ul>
-                </li>
-                <li class="nav-item">
-                    <a href="/data-karyawan" class="nav-link {{ ($title === "Data Karyawan") ? 'active' : '' }}">
-                        <i class="nav-icon fas fa-user"></i>
-                        <p>
-                            Data Karyawan
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="/data-laporan" class="nav-link {{ ($title === "Data Laporan") ? 'active' : '' }}">
-                        <i class="nav-icon fas fa-clipboard-list"></i>
-                        <p>
-                            Data Laporan
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="/bmi" class="nav-link {{ ($title === "BMI") ? 'active' : '' }}">
-                        <i class="nav-icon fas fa-book-medical"></i>
-                        <p>
-                            BMI
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="/registrasi" class="nav-link {{ ($title === "Registrasi") ? 'active' : '' }}">
-                        <i class="nav-icon fas fa-user-plus"></i>
-                        <p>
-                            Registrasi
-                        </p>
-                    </a>
                 </li>
             </ul>
         </nav>
@@ -132,7 +99,8 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="/data-karyawan" class="nav-link {{ $title === 'Data Karyawan' ? 'active' : '' }}">
+                            <a href="/admin/data-karyawan"
+                                class="nav-link {{ $title === 'Data Karyawan' ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-user"></i>
                                 <p>
                                     Data Karyawan
@@ -140,7 +108,8 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="/data-laporan" class="nav-link {{ $title === 'Data Laporan' ? 'active' : '' }}">
+                            <a href="/admin/data-laporan"
+                                class="nav-link {{ $title === 'Data Laporan' ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-clipboard-list"></i>
                                 <p>
                                     Data Laporan
@@ -148,7 +117,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="/bmi" class="nav-link {{ $title === 'BMI' ? 'active' : '' }}">
+                            <a href="/admin/bmi" class="nav-link {{ $title === 'BMI' ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-book-medical"></i>
                                 <p>
                                     BMI
@@ -156,7 +125,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="/registrasi" class="nav-link {{ $title === 'Registrasi' ? 'active' : '' }}">
+                            <a href="/admin/registrasi" class="nav-link {{ $title === 'Registrasi' ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-user-plus"></i>
                                 <p>
                                     Registrasi
@@ -242,16 +211,7 @@
     <script src="{{ asset('AdminLTE/plugins/datatables-buttons/js/buttons.colVis.min.js') }}"></script>
     <script>
         $(function() {
-            $('#table').DataTable({
-                "paging": true,
-                "lengthChange": false,
-                "searching": true,
-                "ordering": true,
-                "info": true,
-                "autoWidth": false,
-                "responsive": true,
-            });
-            $('#registrasi').DataTable({
+            $('#table2').DataTable({
                 "paging": true,
                 "lengthChange": false,
                 "searching": true,
@@ -264,72 +224,4 @@
     </script>
 </body>
 
-<!-- jQuery -->
-<script src="{{ asset('AdminLTE/plugins/jquery/jquery.min.js') }}"></script>
-<!-- jQuery UI 1.11.4 -->
-<script src="{{ asset('AdminLTE/plugins/jquery-ui/jquery-ui.min.js') }}"></script>
-<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-<script>
-  $.widget.bridge('uibutton', $.ui.button)
-</script>
-<!-- Bootstrap 4 -->
-<script src="{{ asset('AdminLTE/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-<!-- ChartJS -->
-<script src="{{ asset('AdminLTE/plugins/chart.js/Chart.min.js') }}"></script>
-<!-- Sparkline -->
-<script src="{{ asset('AdminLTE/plugins/sparklines/sparkline.js') }}"></script>
-<!-- JQVMap -->
-<script src="{{ asset('AdminLTE/plugins/jqvmap/jquery.vmap.min.js') }}"></script>
-<script src="{{ asset('AdminLTE/plugins/jqvmap/maps/jquery.vmap.usa.js') }}"></script>
-<!-- jQuery Knob Chart -->
-<script src="{{ asset('AdminLTE/plugins/jquery-knob/jquery.knob.min.js') }}"></script>
-<!-- daterangepicker -->
-<script src="{{ asset('AdminLTE/plugins/moment/moment.min.js') }}"></script>
-<script src="{{ asset('AdminLTE/plugins/daterangepicker/daterangepicker.js') }}"></script>
-<!-- Tempusdominus Bootstrap 4 -->
-<script src="{{ asset('AdminLTE/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js') }}"></script>
-<!-- Summernote -->
-<script src="{{ asset('AdminLTE/plugins/summernote/summernote-bs4.min.js') }}"></script>
-<!-- overlayScrollbars -->
-<script src="{{ asset('AdminLTE/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js') }}"></script>
-<!-- AdminLTE App -->
-<script src="{{ asset('AdminLTE/dist/js/adminlte.js') }}"></script>
-<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="{{ asset('AdminLTE/dist/js/pages/dashboard2.js') }}"></script>
-<!-- DataTables  & Plugins -->
-<script src="{{ asset('AdminLTE/plugins/datatables/jquery.dataTables.min.js') }}"></script>
-<script src="{{ asset('AdminLTE/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
-<script src="{{ asset('AdminLTE/plugins/datatables-responsive/js/dataTables.responsive.min.js') }}"></script>
-<script src="{{ asset('AdminLTE/plugins/datatables-responsive/js/responsive.bootstrap4.min.js') }}"></script>
-<script src="{{ asset('AdminLTE/plugins/datatables-buttons/js/dataTables.buttons.min.js') }}"></script>
-<script src="{{ asset('AdminLTE/plugins/datatables-buttons/js/buttons.bootstrap4.min.js') }}"></script>
-<script src="{{ asset('AdminLTE/plugins/jszip/jszip.min.js') }}"></script>
-<script src="{{ asset('AdminLTE/plugins/pdfmake/pdfmake.min.js') }}"></script>
-<script src="{{ asset('AdminLTE/plugins/pdfmake/vfs_fonts.js') }}"></script>
-<script src="{{ asset('AdminLTE/plugins/datatables-buttons/js/buttons.html5.min.js') }}"></script>
-<script src="{{ asset('AdminLTE/plugins/datatables-buttons/js/buttons.print.min.js') }}"></script>
-<script src="{{ asset('AdminLTE/plugins/datatables-buttons/js/buttons.colVis.min.js') }}"></script>
-<script>
-    $(function () {
-      $('#table').DataTable({
-        "paging": true,
-        "lengthChange": false,
-        "searching": true,
-        "ordering": true,
-        "info": true,
-        "autoWidth": false,
-        "responsive": true,
-      });
-      $('#registrasi').DataTable({
-        "paging": true,
-        "lengthChange": false,
-        "searching": true,
-        "ordering": true,
-        "info": true,
-        "autoWidth": false,
-        "responsive": true,
-      });
-    });
-  </script>
-</body>
 </html>
