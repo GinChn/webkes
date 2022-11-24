@@ -16,30 +16,42 @@ Route::post('/login', 'LoginController@simpan_login');
 Route::get('/logout', 'LoginController@logout');
 
 Route::group(['middleware' => 'login'], function () {
-    Route::group(['middleware' => 'cekrole:Admin,User'], function (){
-        Route::get('/', 'DashboardController@dashboard');
-
-    Route::get('/profile', 'ProfileController@profile');
-    Route::get('/edit-profile', 'ProfileController@edit_profile');
-    Route::post('/edit-profile', 'ProfileController@simpan_profile');
-
-    Route::get('/data-karyawan', 'KaryawanController@karyawan');
-
-    Route::get('/data-laporan', 'LaporanController@laporan');
-    Route::get('/input-laporan', 'LaporanController@inputlaporan');
-    Route::post('/input-laporan', 'LaporanController@simpanlaporan');
-
-    Route::get('/registrasi', 'RegistrasiController@registrasi');
-    Route::get('/tambah-user', 'RegistrasiController@tambah_user');
-    Route::post('/tambah-user', 'RegistrasiController@simpan_user');
-    Route::get('/hapus-user/{nik}', 'RegistrasiController@hapus_user');
+    Route::get('/', 'DashboardController@dashboard');
     
-    Route::get('/bmi', 'BmiController@bmi');
+    Route::group(['middleware' => 'cekrole:Admin'], function (){
+            Route::prefix('admin')->group(function () {
+            //url: /admin/
+
+            Route::get('profile', 'ProfileController@profile');
+            //url: /admin/profile
+            Route::get('edit-profile', 'ProfileController@edit_profile');
+            Route::post('edit-profile', 'ProfileController@simpan_profile');
+
+            Route::get('data-karyawan', 'KaryawanController@karyawan');
+
+            Route::get('data-laporan', 'LaporanController@laporan');
+
+            Route::get('registrasi', 'RegistrasiController@registrasi');
+            Route::get('tambah-user', 'RegistrasiController@tambah_user');
+            Route::post('tambah-user', 'RegistrasiController@simpan_user');
+            Route::get('hapus-user/{nik}', 'RegistrasiController@hapus_user');
+            
+            Route::get('bmi', 'BmiController@bmi');
+        });
+    });
+
+    Route::group(['middleware' => 'cekrole:User'], function (){
+        Route::prefix('user')->group(function () {
+            Route::get('profile', 'ProfileController@user_profile');
+            Route::get('edit-profile', 'ProfileController@user_edit_profile');
+            Route::post('edit-profile', 'ProfileController@user_simpan_profile');
+
+            Route::get('data-laporan', 'LaporanController@user_laporan');
+            Route::get('input-laporan', 'LaporanController@user_inputlaporan');
+            Route::post('input-laporan', 'LaporanController@user_simpanlaporan');
+
+            Route::get('bmi', 'BmiController@user_bmi');
+        });
     });
     
 });
-
-// Route::get('/dashboard', 'UserController@dashboard');
-// Route::get('/profile', 'UserController@profile');
-// Route::get('/laporan', 'UserController@laporan');
-// Route::get('/bmi', 'UserController@bmi');

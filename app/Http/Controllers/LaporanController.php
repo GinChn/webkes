@@ -9,6 +9,7 @@ use DB;
 
 class LaporanController extends Controller
 {
+    //===========================Admin======================//
     public function laporan()
     {
         return view('admin.laporan.index', [
@@ -16,10 +17,18 @@ class LaporanController extends Controller
         ]);
     }
 
+    //===========================User======================//
+    public function user_laporan()
+    {
+        return view('user.laporan.index', [
+            "title" => "Data Laporan"
+        ]);
+    }
+
     public function inputlaporan()
     {
         $laporan = LaporanModel::index();
-        return view('admin.laporan.input-laporan', [
+        return view('user.laporan.input-laporan', [
             "title" => "Tambah Laporan"
         ]);
     }
@@ -27,6 +36,6 @@ class LaporanController extends Controller
     public function simpanlaporan(request $req)
     {
         LaporanModel::simpanlaporan($req);
-        return redirect('/data-laporan');
+        return redirect('/user/data-laporan');
     }
 }

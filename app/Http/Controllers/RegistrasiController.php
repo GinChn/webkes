@@ -38,17 +38,17 @@ class RegistrasiController extends Controller
 
         $check = DB::table('users')->where('nik', $nik)->first();
         if ($check) {
-            return redirect('/tambah-user');
+            return redirect('/admin/tambah-user');
         }
 
         RegistrasiModel::simpan_user($req);
 
-        return redirect('/registrasi');
+        return redirect('/admin/registrasi');
     }
 
     public function hapus_user($nik)
     {
         DB::table('users')->where('nik', $nik)->delete();
-        return redirect('/registrasi');
+        return redirect('/admin/registrasi');
     }
 }

@@ -59,7 +59,7 @@
                     </p>
                 </li>
                 <li class="user-footer">
-                    <a href="/profile" class="btn btn-default btn-flat">Profile</a>
+                    <a href="/admin/profile" class="btn btn-default btn-flat">Profile</a>
                     <a href="/logout" class="btn btn-default btn-flat float-right">Logout</a>
                 </li>
             </ul>
@@ -89,7 +89,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="/data-karyawan" class="nav-link {{ ($title === "Data Karyawan") ? 'active' : '' }}">
+                    <a href="/admin/data-karyawan" class="nav-link {{ ($title === "Data Karyawan") ? 'active' : '' }}">
                         <i class="nav-icon fas fa-user"></i>
                         <p>
                             Data Karyawan
@@ -97,7 +97,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="/data-laporan" class="nav-link {{ ($title === "Data Laporan") ? 'active' : '' }}">
+                    <a href="/admin/data-laporan" class="nav-link {{ ($title === "Data Laporan") ? 'active' : '' }}">
                         <i class="nav-icon fas fa-clipboard-list"></i>
                         <p>
                             Data Laporan
@@ -105,7 +105,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="/bmi" class="nav-link {{ ($title === "BMI") ? 'active' : '' }}">
+                    <a href="/admin/bmi" class="nav-link {{ ($title === "BMI") ? 'active' : '' }}">
                         <i class="nav-icon fas fa-book-medical"></i>
                         <p>
                             BMI
@@ -113,7 +113,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="/registrasi" class="nav-link {{ ($title === "Registrasi") ? 'active' : '' }}">
+                    <a href="/admin/registrasi" class="nav-link {{ ($title === "Registrasi") ? 'active' : '' }}">
                         <i class="nav-icon fas fa-user-plus"></i>
                         <p>
                             Registrasi
@@ -199,16 +199,7 @@
 <script src="{{ asset('AdminLTE/plugins/datatables-buttons/js/buttons.colVis.min.js') }}"></script>
 <script>
     $(function () {
-      $('#table').DataTable({
-        "paging": true,
-        "lengthChange": false,
-        "searching": true,
-        "ordering": true,
-        "info": true,
-        "autoWidth": false,
-        "responsive": true,
-      });
-      $('#registrasi').DataTable({
+        $('#table2').DataTable({
         "paging": true,
         "lengthChange": false,
         "searching": true,

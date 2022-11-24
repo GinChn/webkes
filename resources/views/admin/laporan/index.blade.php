@@ -15,11 +15,8 @@
         <div class="row">
             <div class="col-12">
                 <div class="card">
-                    <div class="card-header">
-                        <a href="/input-laporan" class="btn btn-success">Tambah Data</a>
-                    </div>
                     <div class="card-body">
-                        <table id="example1" class="table table-bordered table-striped">
+                        <table id="table2" class="table table-bordered table-striped">
                             <thead>
                                 <tr>
                                     <th>NIK</th>

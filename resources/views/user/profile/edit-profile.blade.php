@@ -1,4 +1,4 @@
-@extends('admin.layout')
+@extends('user.layout')
 
 @section('content')
     <!-- daterange picker -->
@@ -53,7 +53,7 @@
                     </div>
                     <div class="card-footer">
                         <button type="submit" class="btn btn-primary">Simpan</button>
-                        <a href="/admin/profile" class="btn btn-danger">Batal</a>
+                        <a href="/user/profile" class="btn btn-danger">Batal</a>
                     </div>
                 </form>
             </div>

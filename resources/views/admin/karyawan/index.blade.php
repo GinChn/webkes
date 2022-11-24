@@ -27,7 +27,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    <table id="table" class="table table-bordered table-striped">
+                    <table id="table2" class="table table-bordered table-striped">
                         <thead>
                             <tr>
                                 <th>NIK</th>

@@ -21,7 +21,7 @@
                         <img class="profile-user-img img-fluid img-circle" src="/AdminLTE/dist/img/user4-128x128.jpg" alt="User profile picture">
                     </div>
                     <h3 class="profile-username text-center mb-3 mt-3">{{ $profile->nama }}</h3>
-                    <a href="/edit-profile" class="btn btn-primary btn-block"><b>Edit</b></a>
+                    <a href="/admin/edit-profile" class="btn btn-primary btn-block"><b>Edit</b></a>
                 </div>
             </div>
         </div>

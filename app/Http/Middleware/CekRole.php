@@ -14,15 +14,11 @@ class CekRole
      * @param  \Closure  $next
      * @return mixed
      */
-    public function handle($request, Closure $next)
+    public function handle($request, Closure $next, ...$roles)
     {
-        $user = [
-            1 => 'Admin', 
-            'User'
-        ];
-
         $level = session('auth')->level_name;
-        if(in_array($level, $user)){
+        
+        if(in_array($level, $roles)){
             return $next($request);
         }
         return redirect('login');

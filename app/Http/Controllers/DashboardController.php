@@ -12,8 +12,17 @@ class DashboardController extends Controller
     public function dashboard(){
         $admins = User::where('id_level','1')->count();
         $users = User::where('id_level','2')->count();
-        return view('admin.dashboard.index', compact('admins', 'users'), [
-            "title" => "Dashboard"
-        ]);
+        if(session('auth')->level_name == 'Admin')
+        {
+            return view('admin.dashboard.index', compact('admins', 'users'), [
+                "title" => "Dashboard"
+            ]);
+        }
+        else
+        {
+            return view('user.dashboard.index', compact('admins', 'users'), [
+                "title" => "Dashboard"
+            ]);
+        }
     }
 }

@@ -17,10 +17,10 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <a href="/tambah-user" class="btn btn-success">Tambah User</a>
+                    <a href="/admin/tambah-user" class="btn btn-success">Tambah User</a>
                 </div>
                 <div class="card-body">
-                    <table id="registrasi" class="table table-bordered table-striped">
+                    <table id="table2" class="table table-bordered table-striped">
                         <thead>
                             <tr>
                                 <th>NIK</th>
@@ -36,7 +36,7 @@
                                 <td>{{ $item->nama }}</td>
                                 <td>{{ $item->level_name }}</td>
                                 <td>
-                                    <a href="/hapus-user/{{ $item->nik }}" class="btn-sm btn-danger">Hapus</a>
+                                    <a href="/admin/hapus-user/{{ $item->nik }}" class="btn-sm btn-danger">Hapus</a>
                                 </td>
                             </tr>
                             @endforeach
