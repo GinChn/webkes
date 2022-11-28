@@ -49,13 +49,13 @@
         <li class="nav-item dropdown user-menu">
             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
                 <img src="{{ asset('AdminLTE/dist/img/user2-160x160.jpg') }}" class="user-image img-circle elevation-2" alt="User Image">
-                <span class="d-none d-md-inline">Alexander Pierce</span>
+                <span class="d-none d-md-inline">{{ session('auth')->nama }}</span>
             </a>
             <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                 <li class="user-header bg-primary">
                     <img src="{{ asset('AdminLTE/dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2" alt="User Image">
                     <p>
-                        Alexander Pierces
+                      {{ session('auth')->nama }}
                     </p>
                 </li>
                 <li class="user-footer">
