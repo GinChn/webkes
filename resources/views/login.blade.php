@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,6 +18,7 @@
         }
     </style>
 </head>
+
 <body class="bg-white font-family-karla h-screen">
 
     <div class="w-full flex flex-wrap">
@@ -34,24 +36,31 @@
                     {{ csrf_field() }}
                     <div class="flex flex-col pt-4">
                         <label for="username" class="text-lg">Username</label>
-                        <input type="text" name="nik" placeholder="Masukkan Username" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline" required>
+                        <input type="text" name="nik" placeholder="Masukkan Username"
+                            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline"
+                            required>
                     </div>
-    
+
                     <div class="flex flex-col pt-4">
                         <label for="password" class="text-lg">Password</label>
-                        <input type="password" name="password" placeholder="Masukkan Password" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline" required>
+                        <input type="password" name="password" placeholder="Masukkan Password"
+                            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline"
+                            required>
                     </div>
-    
-                    <input type="submit" value="Log In" class="bg-black text-white font-bold text-lg hover:bg-red-700 p-2 mt-8">
+
+                    <input type="submit" value="Log In"
+                        class="bg-black text-white font-bold text-lg hover:bg-red-700 p-2 mt-8">
                 </form>
             </div>
         </div>
 
         <!-- Image Section -->
         <div class="w-1/2 shadow-2xl">
-            <img class="object-cover w-full h-screen hidden md:block" src="https://source.unsplash.com/TEYrLTKKMSg">
+            <img class="object-cover w-full h-screen hidden md:block"
+                src="{{ asset('AdminLTE/dist/img/foto login.jpg') }}">
         </div>
     </div>
 
 </body>
+
 </html>
