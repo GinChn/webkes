@@ -23,7 +23,6 @@
                                 <th>No</th>
                                 <th>Nama</th>
                                 <th>Tanggal</th>
-                                <th>Usia</th>
                                 <th>Berat Badan</th>
                                 <th>Tinggi Badan</th>
                                 <th>Keterangan</th>
@@ -35,8 +34,7 @@
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $row->nama }}</td>
-                                <td>{{ $row->created_at }}</td>
-                                <td>{{ $row->usia }} Tahun</td>
+                                <td>{{ date('d F Y', strtotime($row->created_at)) }}</td>
                                 <td>{{ $row->berat_badan }}</td>
                                 <td>{{ $row->tinggi_badan }}</td>
                                 <td>{{ $row->keterangan }}</td>

@@ -41,10 +41,10 @@
                     <p class="text-muted">{{ $profile->jenis_kelamin }}</p>
                     <hr>
                     <strong>Tanggal Lahir</strong>
-                    <p class="text-muted">{{ $profile->tgl_lahir }}</p>
+                    <p class="text-muted">{{ date('d F Y', strtotime($profile->tgl_lahir)) }}</p>
                     <hr>
                     <strong>Usia</strong>
-                    <p class="text-muted">{{ $profile->usia }}</p>
+                    <p class="text-muted">{{ $profile->usia }} Tahun</p>
                 </div>
             </div>
         </div>
