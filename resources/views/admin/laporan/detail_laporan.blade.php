@@ -5,7 +5,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Data Laporan</h1>
+                    <h1 class="m-0">Detail Laporan</h1>
                 </div>
             </div>
         </div>
@@ -20,10 +20,11 @@
                             <thead>
                                 <tr>
                                     <th>Tanggal</th>
-                                    <th>NIK</th>
                                     <th>Nama</th>
                                     <th>Jumlah Langkah</th>
-                                    <th>Aksi</th>
+                                    <th>Foto Langkah</th>
+                                    <th>Foto Selfie Sebelum</th>
+                                    <th>Foto Selfie Sesudah</th>
                                 </tr>
                             </thead>
                             <tbody>

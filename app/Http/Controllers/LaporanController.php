@@ -6,9 +6,11 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use App\DA\LaporanModel;
 use DB;
+use Illuminate\Support\Facades\Auth;
 
 class LaporanController extends Controller
 {
+
     //===========================Admin======================//
     public function laporan()
     {
@@ -20,22 +22,31 @@ class LaporanController extends Controller
     //===========================User======================//
     public function user_laporan()
     {
-        return view('user.laporan.index', [
+
+        $laporan = LaporanModel::user_laporan();
+
+        return view('user.laporan.index', compact('laporan'), [
             "title" => "Data Laporan"
         ]);
     }
 
-    public function inputlaporan()
-    {
-        $laporan = LaporanModel::index();
-        return view('user.laporan.input-laporan', [
-            "title" => "Tambah Laporan"
-        ]);
-    }
+    // public function user_inputlaporan()
+    // {
+    //     // $laporan = LaporanModel::index();
+    //     return view('user.laporan.input-laporan', [
+    //         "title" => "Tambah Laporan"
+    //     ]);
+    // }
 
-    public function simpanlaporan(request $req)
+    public function user_simpanlaporan(request $req)
     {
         LaporanModel::simpanlaporan($req);
+        return redirect('/user/data-laporan');
+    }
+
+    public function user_hapuslaporan($id_laporan)
+    {
+        DB::table('laporan')->where('id_laporan', $id_laporan)->delete();
         return redirect('/user/data-laporan');
     }
 }

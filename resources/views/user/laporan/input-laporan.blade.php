@@ -11,32 +11,40 @@
                     <div class="card mt-3">
                         <div class="card-body">
                             <div class="basic-form">
-                                <form method="POST">
+                                <form method="POST" enctype="multipart/form-data">
                                     {{ csrf_field() }}
-                                    <div class="form-group row">
-                                        <label class="col-sm-2 col-form-label">NIK</label>
-                                        <div class="col-sm-10">
-                                            <input type="text" class="form-control" placeholder="NIK" name="nik">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="col-sm-2 col-form-label">Nama</label>
-                                        <div class="col-sm-10">
-                                            <input type="text" class="form-control" placeholder="Nama" name="nama">
-                                        </div>
-                                    </div>
 
                                     <div class="form-group row">
-                                        <label class="col-sm-2 col-form-label">Langkah</label>
+                                        <label class="col-sm-2 col-form-label">Jumlah Langkah</label>
                                         <div class="col-sm-10">
-                                            <input type="text" class="form-control" placeholder="Langkah" name="langkah">
+                                            <input type="text" class="form-control" placeholder="Jumlah Langkah"
+                                                name="jumlah_langkah">
                                         </div>
                                     </div>
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend"><span class="input-group-text">Upload Bukti</span>
                                         </div>
                                         <div class="custom-file">
-                                            <input type="file" class="custom-file-input" name="photo">
+                                            <input type="file" class="custom-file-input" name="photo_bukti">
+                                            <label class="custom-file-label">Pilih Photo</label>
+                                        </div>
+                                    </div>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend"><span class="input-group-text">Upload Foto Selfie
+                                                Sebelum</span>
+                                        </div>
+                                        <div class="custom-file">
+                                            <input type="file" class="custom-file-input" name="photo_sebelum">
+                                            <label class="custom-file-label">Pilih Photo</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend"><span class="input-group-text">Upload Foto Selfie
+                                                Sesudah</span>
+                                        </div>
+                                        <div class="custom-file">
+                                            <input type="file" class="custom-file-input" name="photo_sesudah">
                                             <label class="custom-file-label">Pilih Photo</label>
                                         </div>
                                     </div>
@@ -44,7 +52,7 @@
                                     <div class="form-group row">
                                         <div class="col-sm-10">
                                             <button type="submit" class="btn btn-success">Simpan</button>
-                                            <button type="submit" class="btn btn-danger">Batal</button>
+                                            <a href="/user/data-laporan" class="btn btn-danger">Batal</a>
                                         </div>
                                     </div>
                                 </form>
