@@ -21,10 +21,6 @@ Route::group(['middleware' => 'login'], function () {
     Route::group(['middleware' => 'cekrole:Admin'], function () {
         Route::prefix('admin')->group(function () {
             //url: /admin/
-
-    Route::group(['middleware' => 'cekrole:Admin'], function () {
-        Route::prefix('admin')->group(function () {
-            //url: /admin/
             Route::get('detail-grafik', 'DashboardController@dashboard_grafik');
             Route::get('profile', 'ProfileController@profile');
             //url: /admin/profile
@@ -56,7 +52,6 @@ Route::group(['middleware' => 'login'], function () {
             // Route::get('input-laporan', 'LaporanController@user_inputlaporan');
             Route::post('data-laporan', 'LaporanController@user_simpanlaporan');
             Route::get('hapus-data/{id_laporan}', 'LaporanController@user_hapuslaporan');
-
 
             Route::get('bmi', 'BmiController@user_bmi');
             Route::get('tambah-bmi', 'BmiController@user_tambah_bmi');
