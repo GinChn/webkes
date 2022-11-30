@@ -10,7 +10,25 @@ date_default_timezone_set("Asia/Makassar");
 
 class LaporanModel extends Model
 {
+    public static function admin_laporan()
+    {
+        return DB::table('laporan')
+            ->join('users', 'laporan.nik', '=', 'users.nik')
+            ->select('users.nik', 'users.nama', 'laporan.langkah', 'laporan.id_laporan', 'laporan.created_at',)
+            ->get();
+    }
 
+    public static function detail_laporan($id_laporan)
+    {
+        return DB::table('laporan')
+            ->join('users', 'laporan.nik', '=', 'users.nik')
+            ->select('users.nik', 'users.nama', 'laporan.langkah', 'laporan.id_laporan', 'laporan.created_at', 'laporan.bukti_langkah', 'laporan.selfie_sebelum', 'laporan.selfie_sesudah')
+            ->where('id_laporan', $id_laporan)
+            ->get();
+    }
+
+
+    // ----------------------------------------USER-------------------------------//
     public static function user_laporan()
     {
         return DB::table('laporan')

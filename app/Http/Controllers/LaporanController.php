@@ -14,10 +14,22 @@ class LaporanController extends Controller
     //===========================Admin======================//
     public function laporan()
     {
-        return view('admin.laporan.index', [
+        $laporan = LaporanModel::admin_laporan();
+
+        return view('admin.laporan.index', compact('laporan'), [
             "title" => "Data Laporan"
         ]);
     }
+
+    public function detail_laporan($id_laporan)
+    {
+        $laporan = LaporanModel::detail_laporan($id_laporan);
+
+        return view('admin.laporan.detail_laporan', compact('laporan'), [
+            "title" => "Detail Laporan"
+        ]);
+    }
+
 
     //===========================User======================//
     public function user_laporan()

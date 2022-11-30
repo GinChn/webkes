@@ -18,8 +18,8 @@ Route::get('/logout', 'LoginController@logout');
 Route::group(['middleware' => 'login'], function () {
     Route::get('/', 'DashboardController@dashboard');
 
-    Route::group(['middleware' => 'cekrole:Admin'], function (){
-            Route::prefix('admin')->group(function () {
+    Route::group(['middleware' => 'cekrole:Admin'], function () {
+        Route::prefix('admin')->group(function () {
             //url: /admin/
 
     Route::group(['middleware' => 'cekrole:Admin'], function () {
@@ -34,6 +34,8 @@ Route::group(['middleware' => 'login'], function () {
             Route::get('data-karyawan', 'KaryawanController@karyawan');
 
             Route::get('data-laporan', 'LaporanController@laporan');
+            Route::get('detail-laporan/{id_laporan}', 'LaporanController@detail_laporan');
+
 
             Route::get('registrasi', 'RegistrasiController@registrasi');
             Route::get('tambah-user', 'RegistrasiController@tambah_user');

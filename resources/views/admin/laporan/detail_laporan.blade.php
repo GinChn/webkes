@@ -27,6 +27,7 @@
                                     <th>Foto Selfie Sesudah</th>
                                 </tr>
                             </thead>
+                            <a href="/admin/data-laporan" class="btn btn-danger">Batal</a>
                             <tbody>
 
                             </tbody>

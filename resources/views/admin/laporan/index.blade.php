@@ -19,15 +19,26 @@
                         <table id="table2" class="table table-bordered table-striped">
                             <thead>
                                 <tr>
-                                    <th>Tanggal</th>
                                     <th>NIK</th>
                                     <th>Nama</th>
                                     <th>Jumlah Langkah</th>
+                                    <th>Tanggal</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
-
+                                @foreach ($laporan as $lap)
+                                    <tr>
+                                        <td>{{ $lap->nik }}</td>
+                                        <td>{{ $lap->nama }}</td>
+                                        <td>{{ $lap->langkah }}</td>
+                                        <td>{{ date('d F Y', strtotime($lap->created_at)) }}</td>
+                                        <td>
+                                            <a href="/admin/detail-laporan/{{ $lap->id_laporan }}"
+                                                class="btn btn-success">Detail</a>
+                                        </td>
+                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
