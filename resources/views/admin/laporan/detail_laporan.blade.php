@@ -11,25 +11,30 @@
         </div>
     </div>
 
+
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
-                        <table id="table2" class="table table-bordered table-striped">
+                        <table class="table table-bordered table-striped">
                             <thead>
                                 <tr>
                                     <th>Tanggal</th>
+                                    <th>NIK</th>
                                     <th>Nama</th>
                                     <th>Jumlah Langkah</th>
-                                    <th>Foto Langkah</th>
-                                    <th>Foto Selfie Sebelum</th>
-                                    <th>Foto Selfie Sesudah</th>
                                 </tr>
                             </thead>
-                            <a href="/admin/data-laporan" class="btn btn-danger">Batal</a>
                             <tbody>
-
+                                @foreach ($laporan as $lap)
+                                    <tr>
+                                        <td>{{ date('d F Y', strtotime($lap->created_at)) }}</td>
+                                        <td>{{ $lap->nik }}</td>
+                                        <td>{{ $lap->nama }}</td>
+                                        <td>{{ $lap->langkah }}</td>
+                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -37,4 +42,83 @@
             </div>
         </div>
     </div>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card card-outline card-primary">
+                <div class="card-header">
+                    <h3 class="card-title ">Foto Langkah</h3>
+                    <div class="card-tools">
+                        <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                            <i class="fas fa-minus"></i>
+                        </button>
+                    </div>
+                    <!-- /.card-tools -->
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body">
+                    @foreach ($laporan as $lap)
+                        <tr>
+                            <td>
+                                <img src="{{ asset('foto/bukti/' . $lap->bukti_langkah) }}" alt="" height="400px"
+                                    width="425px">
+                            </td>
+                        </tr>
+                    @endforeach
+                </div>
+                <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+        </div>
+        <!-- /.col -->
+
+        <div class="col-md-4">
+            <div class="card card-outline card-danger">
+                <div class="card-header">
+                    <h3 class="card-title">Foto Selfie Sebelum</h3>
+
+                    <div class="card-tools">
+                        <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                            <i class="fas fa-minus"></i>
+                        </button>
+                    </div>
+                    <!-- /.card-tools -->
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body">
+                    <td>
+                        <img src="{{ asset('foto/sebelum/' . $lap->selfie_sebelum) }}" alt="" height="400px"
+                            width="425px">
+                    </td>
+                </div>
+                <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+        </div>
+        <!-- /.col -->
+
+        <div class="col-md-4">
+            <div class="card card-outline card-success">
+                <div class="card-header">
+                    <h3 class="card-title">Foto Selfie Sesudah</h3>
+
+                    <div class="card-tools">
+                        <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                            <i class="fas fa-minus"></i>
+                        </button>
+                    </div>
+                    <!-- /.card-tools -->
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body">
+                    <td> <img src="{{ asset('foto/sesudah/' . $lap->selfie_sesudah) }}" alt="" height="400px"
+                            width="425px">
+                    </td>
+                </div>
+                <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+        </div>
+        <!-- /.col -->
+    </div>
+    <a href="/admin/data-laporan" class="btn btn-danger">Close</a>
 @endsection

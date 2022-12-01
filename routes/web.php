@@ -31,6 +31,8 @@ Route::group(['middleware' => 'login'], function () {
 
             Route::get('data-laporan', 'LaporanController@laporan');
             Route::get('detail-laporan/{id_laporan}', 'LaporanController@detail_laporan');
+            Route::get('hapus-data/{id_laporan}', 'LaporanController@admin_hapuslaporan');
+
 
 
             Route::get('registrasi', 'RegistrasiController@registrasi');

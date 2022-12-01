@@ -36,6 +36,8 @@
                                         <td>
                                             <a href="/admin/detail-laporan/{{ $lap->id_laporan }}"
                                                 class="btn btn-success">Detail</a>
+                                            <a href="/admin/hapus-data/{{ $lap->id_laporan }}"
+                                                class="btn btn-danger">Hapus</a>
                                         </td>
                                     </tr>
                                 @endforeach

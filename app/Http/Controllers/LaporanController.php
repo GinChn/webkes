@@ -30,6 +30,12 @@ class LaporanController extends Controller
         ]);
     }
 
+    public function admin_hapuslaporan($id_laporan)
+    {
+        DB::table('laporan')->where('id_laporan', $id_laporan)->delete();
+        return redirect('/admin/data-laporan');
+    }
+
 
     //===========================User======================//
     public function user_laporan()
@@ -52,8 +58,13 @@ class LaporanController extends Controller
 
     public function user_simpanlaporan(request $req)
     {
+        $this->validate($req, [
+            'title' => 'required',
+            'description' => 'required'
+        ]);
+
         LaporanModel::simpanlaporan($req);
-        return redirect('/user/data-laporan');
+        return redirect('/user/data-laporan')->with('success', 'Data Berhasil disimpan.');
     }
 
     public function user_hapuslaporan($id_laporan)
