@@ -175,7 +175,56 @@
         <div class="row">
             <!-- Left col -->
             <div class="col-md-12">
-                <!-- TABLE: LATEST ORDERS -->
+                <!-- TABLE: SEE GRAPHIC -->
+                <div class="card">
+                    <div class="card-header border-transparent">
+                        <h3 class="card-title">User Graphic</h3>
+
+                        <div class="card-tools">
+                            <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                            <button type="button" class="btn btn-tool" data-card-widget="remove">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body p-0">
+                        <div class="table-responsive">
+                            <table id="example2" class="table m-0">
+                                <thead>
+                                    <tr>
+                                        <th>NIK</th>
+                                        <th>Nama</th>
+                                        <th>Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($user as $item)
+                                        <tr>
+                                            <td>{{ $item->nik }}</td>
+                                            <td>{{ $item->nama }}</td>
+                                            <td><a href="/admin/user-grafik/{{ $item->nik }}"
+                                                    class="btn-sm btn-warning">Lihat Grafik</a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- /.table-responsive -->
+                    </div>
+                    <!-- /.card-body -->
+                    {{-- <div class="card-footer clearfix">
+                        <a href="javascript:void(0)" class="btn btn-sm btn-info float-left">Place New Order</a>
+                        <a href="javascript:void(0)" class="btn btn-sm btn-secondary float-right">View All Orders</a>
+                    </div> --}}
+                    <!-- /.card-footer -->
+                </div>
+                <!-- /.card -->
+
+                <!-- TABLE: LATEST REPORT -->
                 <div class="card">
                     <div class="card-header border-transparent">
                         <h3 class="card-title">Latest Report</h3>
@@ -192,13 +241,13 @@
                     <!-- /.card-header -->
                     <div class="card-body p-0">
                         <div class="table-responsive">
-                            <table class="table m-0">
+                            <table id="example" class="table m-0">
                                 <thead>
                                     <tr>
                                         <th>Nama</th>
                                         <th>Jumlah Langkah</th>
                                         <th>Tanggal</th>
-                                        <th>Aksi</th>
+                                        {{-- <th>Aksi</th> --}}
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -206,8 +255,7 @@
                                         <tr>
                                             <td>{{ $item->nama }}</td>
                                             <td>{{ $item->langkah }}</td>
-                                            <td>{{ $item->created_at }}</td>
-                                            <td><a href="/admin/detail-grafik" class="btn-sm btn-warning">Detail</a></td>
+                                            <td>{{ date('d-m-Y H:i:s', strtotime($item->created_at)) }}</td>
                                         </tr>
                                     @endforeach
                                 </tbody>
@@ -222,7 +270,7 @@
                     </div> --}}
                     <!-- /.card-footer -->
                 </div>
-                <!-- /.card -->
+
             </div>
             <!-- /.col -->
         </div>
@@ -230,63 +278,27 @@
     </div>
 @endsection
 
-{{-- @section('script')
+@section('script')
     <script>
-        window.chartColors = {
-            red: 'rgb(255, 99, 132)',
-            orange: 'rgb(255, 159, 64)',
-            yellow: 'rgb(255, 205, 86)',
-            green: 'rgb(75, 192, 192)',
-            blue: 'rgb(54, 162, 235)',
-            purple: 'rgb(153, 102, 255)',
-            grey: 'rgb(231,233,237)'
-        };
-
-        var ctx = document.getElementById("canvas").getContext("2d");
-
-        var myChart = new Chart(ctx, {
-            type: 'line',
-            data: {
-                labels: [0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8,
-                    0.85, 0.9, 0.95, 1
-                ],
-                datasets: [{
-                    label: 'Dataset 1',
-                    borderColor: window.chartColors.blue,
-                    borderWidth: 2,
-                    fill: false,
-                    data: [19304, 13433, 9341, 6931, 5169, 3885, 2927, 2159, 1853, 1502, 1176, 911, 724,
-                        590, 491, 400, 335, 280, 239, 200
-                    ]
-                }]
-            },
-            options: {
-                responsive: true,
-                title: {
-                    display: true,
-                    text: 'Chart.js Drsw Line on Chart'
-                },
-                tooltips: {
-                    mode: 'index',
-                    intersect: true
-                },
-                annotation: {
-                    annotations: [{
-                        type: 'line',
-                        mode: 'horizontal',
-                        scaleID: 'y-axis-0',
-                        value: 2225,
-                        endValue: 0,
-                        borderColor: 'rgb(75, 192, 192)',
-                        borderWidth: 4,
-                        label: {
-                            enabled: true,
-                            content: 'Trendline',
-                            yAdjust: -16,
-                        }
-                    }]
-                }
-            }
+        $(function() {
+            $('#example2').DataTable({
+                "paging": false,
+                "lengthChange": false,
+                "searching": false,
+                "ordering": true,
+                "info": false,
+                "autoWidth": false,
+                "responsive": true,
+            });
+            $('#example').DataTable({
+                "paging": false,
+                "lengthChange": false,
+                "searching": false,
+                "ordering": true,
+                "info": false,
+                "autoWidth": false,
+                "responsive": true,
+            });
         });
     </script>
-@endsection --}}
+@endsection

@@ -21,6 +21,7 @@ Route::group(['middleware' => 'login'], function () {
     Route::group(['middleware' => 'cekrole:Admin'], function () {
         Route::prefix('admin')->group(function () {
             //url: /admin/
+            Route::get('user-grafik/{id}', 'DashboardController@user_grafik');
             Route::get('detail-grafik', 'DashboardController@dashboard_grafik');
             Route::get('profile', 'ProfileController@profile');
             //url: /admin/profile
@@ -46,6 +47,8 @@ Route::group(['middleware' => 'login'], function () {
 
     Route::group(['middleware' => 'cekrole:User'], function () {
         Route::prefix('user')->group(function () {
+            Route::get('tampilan-grafik', 'DashboardController@tampilan_grafik');
+
             Route::get('profile', 'ProfileController@user_profile');
             Route::get('edit-profile', 'ProfileController@user_edit_profile');
             Route::post('edit-profile', 'ProfileController@user_simpan_profile');

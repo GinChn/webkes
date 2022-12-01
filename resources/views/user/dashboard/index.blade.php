@@ -42,7 +42,7 @@
                         <span class="info-box-number">
                             <?php
                             date_default_timezone_set('Asia/Makassar');
-                            echo $runningTime = date('h:i:s');
+                            echo $runningTime = date('H:i:s');
                             ?>
                         </span>
                     </div>
