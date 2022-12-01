@@ -25,8 +25,8 @@
                                 <th>Tanggal</th>
                                 <th>Berat Badan</th>
                                 <th>Tinggi Badan</th>
+                                <th>Hasil BMI</th>
                                 <th>Keterangan</th>
-                                <th>Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -37,8 +37,8 @@
                                 <td>{{ date('d F Y', strtotime($row->created_at)) }}</td>
                                 <td>{{ $row->berat_badan }}</td>
                                 <td>{{ $row->tinggi_badan }}</td>
+                                <td>{{ number_format((float)$row->hasil_bmi, 1, '.', '') }}</td>
                                 <td>{{ $row->keterangan }}</td>
-                                <td>#</td>
                             </tr>
                             @endforeach
                         </tbody>

@@ -20,45 +20,59 @@ class BmiController extends Controller
     //===========================USer======================//
     public function user_bmi(){
         $bmi = BmiModel::bmi_user();
-        return view('user.bmi.index', compact('bmi'), [
+        $data = BmiModel::tambah_bmi(session('auth')->nik);
+        return view('user.bmi.index', compact('bmi', 'data'), [
             "title" => "BMI"
-        ]);
-    }
-
-    public function user_tambah_bmi(){
-        return view('user.bmi.tambah-bmi', [
-            "title" => "Tambah BMI"
         ]);
     }
 
     public function simpan_bmi(Request $req)
     {
         $nik = $req->input('nik');
+        $jk = $req->input('jk');
+        $usia = $req->input('usia');
         $bb = $req->input('bb');
         $tb = $req->input('tb');
         $tbhasil = $tb/100;
-        $hasil = $bb / ($tbhasil * $tbhasil);
+        $hasil_bmi = $bb / ($tbhasil * $tbhasil);
+        $bmr_wanita = 655 + (9.6 * $bb) + (1.8 * $tb) - (4.7 * $usia);
+        $bmr_pria = 66 + (13.7 * $bb) + (5 * $tb) - (6.8 * $usia);
+
         // dd($nik, $bb, $tb, $tbhasil, $hasil);
-    if ($hasil <= 17) {
+    // =============== Perhitungan BMI ====================== //
+    if ($hasil_bmi <= 17) {
         $keterangan = 'Sangat Kurus';
-    } elseif ($hasil >= 17 and $hasil <= 18.5) {
+    } elseif ($hasil_bmi >= 17 and $hasil_bmi <= 18.5) {
         $keterangan = 'Kurus';
-    } elseif ($hasil >= 18.5 and $hasil <= 25) {
+    } elseif ($hasil_bmi >= 18.5 and $hasil_bmi <= 25) {
         $keterangan = 'Normal';
-    } elseif ($hasil >= 25 and $hasil <= 27) {
+    } elseif ($hasil_bmi >= 25 and $hasil_bmi <= 27) {
         $keterangan = 'Gemuk';
-    } elseif ($hasil >= 27) {
+    } elseif ($hasil_bmi >= 27) {
         $keterangan = 'Obesitas';
     }
-    
+
+    // =============== Perhitungan BMR ====================== //
+    if ($jk = 'Perempuan') {
+        $hasil_bmr = $bmr_wanita;
+    }
+    if ($jk = 'Laki-laki') {
+        $hasil_bmr = $bmr_pria;
+    }
+
+    // =============== Simpan Semua Perhitungan Ke dalam Array ====================== //
         $hasilakhir = [
             'nik' => $nik,
+            'jenis_kelamin' => $jk,
+            'usia' => $usia,
             'berat_badan' => $bb,
             'tinggi_badan' => $tb,
-            'hasil_bmi' => $hasil,
-            'keterangan' => $keterangan
+            'hasil_bmi' => $hasil_bmi,
+            'keterangan' => $keterangan,
+            'hasil_bmr' => $hasil_bmr,
         ];
 
+        // =============== Kirim data ke model ====================== //
         BmiModel::simpan_bmi($hasilakhir);
         return redirect('/user/bmi');
     }

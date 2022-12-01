@@ -54,8 +54,7 @@ Route::group(['middleware' => 'login'], function () {
             Route::get('hapus-data/{id_laporan}', 'LaporanController@user_hapuslaporan');
 
             Route::get('bmi', 'BmiController@user_bmi');
-            Route::get('tambah-bmi', 'BmiController@user_tambah_bmi');
-            Route::post('tambah-bmi', 'BmiController@simpan_bmi');
+            Route::post('bmi', 'BmiController@simpan_bmi');
             Route::get('detail-bmi/{id_bmi}', 'BmiController@detail_bmi');
             Route::get('hapus-bmi/{id_bmi}', 'BmiController@hapus_bmi');
         });

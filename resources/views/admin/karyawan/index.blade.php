@@ -43,7 +43,7 @@
                                 <td>{{ $kry->nik }}</td>
                                 <td>{{ $kry->nama }}</td>
                                 <td>{{ $kry->jenis_kelamin }}</td>
-                                <td>{{ $kry->tgl_lahir }}</td>
+                                <td>{{ date('d F Y', strtotime($kry->tgl_lahir)) }}</td>
                                 <td>{{ $kry->usia }} Tahun</td>
                             </tr>
                             @endforeach
