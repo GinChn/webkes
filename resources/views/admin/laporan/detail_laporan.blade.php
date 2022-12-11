@@ -13,7 +13,7 @@
 
 
     <div class="container-fluid">
-        <div class="row">
+        <div class="row px-3">
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
@@ -42,7 +42,7 @@
             </div>
         </div>
     </div>
-    <div class="row">
+    <div class="row px-4">
         <div class="col-md-4">
             <div class="card card-outline card-primary">
                 <div class="card-header">
@@ -120,5 +120,7 @@
         </div>
         <!-- /.col -->
     </div>
-    <a href="/admin/data-laporan" class="btn btn-danger">Close</a>
+    <div class="mx-4">
+    <a href="/admin/data-laporan" class="btn btn-danger btn-block " style="margin-bottom: 10px;">Close</a>
+    </div>
 @endsection

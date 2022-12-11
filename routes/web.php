@@ -32,9 +32,7 @@ Route::group(['middleware' => 'login'], function () {
 
             Route::get('data-laporan', 'LaporanController@laporan');
             Route::get('detail-laporan/{id_laporan}', 'LaporanController@detail_laporan');
-            Route::get('hapus-data/{id_laporan}', 'LaporanController@admin_hapuslaporan');
-
-
+            Route::get('lap-excel', 'LaporanController@export')->name('export-admin');
 
             Route::get('registrasi', 'RegistrasiController@registrasi');
             Route::get('tambah-user', 'RegistrasiController@tambah_user');
@@ -54,9 +52,9 @@ Route::group(['middleware' => 'login'], function () {
             Route::post('edit-profile', 'ProfileController@user_simpan_profile');
 
             Route::get('data-laporan', 'LaporanController@user_laporan');
-            // Route::get('input-laporan', 'LaporanController@user_inputlaporan');
             Route::post('data-laporan', 'LaporanController@user_simpanlaporan');
             Route::get('hapus-data/{id_laporan}', 'LaporanController@user_hapuslaporan');
+            Route::get('lap-excel', 'LaporanController@export_user')->name('export');
 
             Route::get('bmi', 'BmiController@user_bmi');
             Route::post('bmi', 'BmiController@simpan_bmi');

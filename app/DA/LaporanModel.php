@@ -14,7 +14,7 @@ class LaporanModel extends Model
     {
         return DB::table('laporan')
             ->join('users', 'laporan.nik', '=', 'users.nik')
-            ->select('users.nik', 'users.nama', 'laporan.langkah', 'laporan.id_laporan', 'laporan.created_at',)
+            ->select('users.nik', 'users.nama', 'laporan.langkah', 'laporan.id_laporan', 'laporan.created_at')
             ->get();
     }
 
@@ -37,18 +37,6 @@ class LaporanModel extends Model
             ->where('laporan.nik', session('auth')->nik)
             ->get();
     }
-
-
-
-    // public static function user_inputlaporan($req)
-    // {
-
-    //     $laporan = DB::table('laporan')->insert([
-    //         'nik' => session('auth')->nik,
-    //         'langkah' => $req->input('jumlah_langkah'),
-    //         'created_at' => new \DateTime(),
-    //     ]);
-    // }
 
     public static function simpanlaporan($req)
     {
@@ -78,5 +66,14 @@ class LaporanModel extends Model
             'selfie_sebelum' => $name_sebelum,
             'selfie_sesudah' => $name_sesudah,
         ]);
+    }
+
+    public static function user_export()
+    {
+        return DB::table('laporan')
+            ->join('users', 'laporan.nik', '=', 'users.nik')
+            ->select('users.nik', 'users.nama', 'laporan.langkah', 'laporan.id_laporan', 'laporan.created_at')
+            ->where('laporan.nik', session('auth')->nik)
+            ->get();
     }
 }

@@ -21,6 +21,7 @@
                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-xl">
                             Tambah Data
                         </button>
+                        <a href="{{ route('export') }}" class="btn btn-success">Excel</a>
                     </div>
                     <div class="card-body">
                         <table id="table2" class="table table-bordered table-striped">
@@ -51,8 +52,8 @@
                                                 height="50px" width="50px">
                                         </td>
                                         <td>
-                                            <a href="/user/hapus-data/{{ $lap->id_laporan }}"
-                                                class="btn btn-danger">Hapus</a>
+                                            <a href="#" class="btn btn-danger hapus"
+                                                data-id="{{ $lap->id_laporan }}">Hapus</a>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -104,7 +105,6 @@
                                 <label class="custom-file-label">Pilih Photo</label>
                             </div>
                         </div>
-
                         <div class="input-group mb-3">
                             <div class="input-group-prepend"><span class="input-group-text">Upload Foto Selfie
                                     Sesudah</span>
@@ -117,7 +117,7 @@
 
                         <div class="form-group row">
                             <div class="col-sm-10">
-                                <button type="submit" class="btn btn-success">Simpan</button>
+                                <button type="submit" class="btn btn-success simpan" id="simpan">Simpan</button>
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
                             </div>
                         </div>
@@ -128,4 +128,50 @@
         </div>
         <!-- /.modal-dialog -->
     </div>
+@endsection
+
+@section('foot')
+    <script src="{{ asset('AdminLTE/plugins/bs-custom-file-input/bs-custom-file-input.min.js') }}"></script>
+    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.9.6/lottie.min.js"></script> --}}
+    {{-- <script src="https://code.jquery.com/jquery-3.6.1.slim.js" integrity="sha256-tXm+sa1uzsbFnbXt8GJqsgi2Tw+m4BLGDof6eUPjbtk=" crossorigin="anonymous"></script> --}}
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        $(function() {
+            bsCustomFileInput.init();
+
+            $('.hapus').click(function() {
+                var laporanid = $(this).attr('data-id');
+                Swal.fire({
+                    title: 'Yakin?',
+                    text: "Hapus data ini",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    showConfirmButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Ya, hapus!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location = "hapus-data/" + laporanid + ""
+                        Swal.fire(
+                            'Terhapus!',
+                            'Data berhasil terhapus',
+                            'success'
+                        )
+                    }
+                })
+            })
+
+            document.getElementById('simpan').onclick = function() {
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Data berhasil tersimpan',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+            }
+
+        })
+    </script>
 @endsection

@@ -17,6 +17,8 @@
                 <div class="card">
                     <div class="card-body">
                         <table id="table2" class="table table-bordered table-striped">
+                            <a href="{{ route('export-admin') }}" class="btn btn-success">Excel</a>
+
                             <thead>
                                 <tr>
                                     <th>NIK</th>
@@ -36,8 +38,6 @@
                                         <td>
                                             <a href="/admin/detail-laporan/{{ $lap->id_laporan }}"
                                                 class="btn btn-success">Detail</a>
-                                            <a href="/admin/hapus-data/{{ $lap->id_laporan }}"
-                                                class="btn btn-danger">Hapus</a>
                                         </td>
                                     </tr>
                                 @endforeach
