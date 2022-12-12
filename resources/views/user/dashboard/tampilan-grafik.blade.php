@@ -18,10 +18,7 @@
                 </div>
                 <div class="col-md m-0">
                     <h1>
-                        <?php
-                        date_default_timezone_set('Asia/Makassar');
-                        echo $runningTime = date('H:i:s');
-                        ?>
+                        <span class="info-box-number time_interval"></span>
                     </h1>
                 </div>
             </div>
@@ -115,7 +112,7 @@
                     <!-- /.card-header -->
                     <div class="card-body p-0">
                         <div class="table-responsive">
-                            <table class="table m-0">
+                            <table id="example3" class="table m-0">
                                 <thead>
                                     <tr>
                                         <th>Jumlah Langkah</th>
@@ -271,6 +268,44 @@
                 options: lineChartOptions
             })
 
-        })
+            var check_bolong = {!! json_encode($check_bolong) !!};
+            console.log(check_bolong)
+
+            if (check_bolong.ada >= 3) {
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    showCloseButton: true,
+                })
+
+                Toast.fire({
+                    icon: 'warning',
+                    title: 'Olahraga cuk!'
+                })
+            }
+
+            function time() {
+                var d = new Date();
+                var s = d.getSeconds();
+                var m = d.getMinutes();
+                var h = d.getHours();
+                $('.time_interval').text(("0" + h).substr(-2) + ":" + ("0" + m).substr(-2) + ":" + ("0" + s).substr(
+                    -2));
+            }
+            time()
+            setInterval(time, 1000);
+
+            $('#example3').DataTable({
+                "paging": false,
+                "lengthChange": false,
+                "searching": false,
+                "ordering": true,
+                "info": false,
+                "autoWidth": false,
+                "responsive": true,
+            });
+
+        });
     </script>
 @endsection

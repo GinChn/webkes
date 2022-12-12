@@ -39,12 +39,7 @@
 
                     <div class="info-box-content">
                         <span class="info-box-text">Time</span>
-                        <span class="info-box-number">
-                            <?php
-                            date_default_timezone_set('Asia/Makassar');
-                            echo $runningTime = date('H:i:s');
-                            ?>
-                        </span>
+                        <span class="info-box-number time_interval"></span>
                     </div>
                     <!-- /.info-box-content -->
                 </div>
@@ -299,6 +294,17 @@
                 "autoWidth": false,
                 "responsive": true,
             });
+
+            function time() {
+                var d = new Date();
+                var s = d.getSeconds();
+                var m = d.getMinutes();
+                var h = d.getHours();
+                $('.time_interval').text(("0" + h).substr(-2) + ":" + ("0" + m).substr(-2) + ":" + ("0" + s).substr(
+                    -2));
+            }
+            time()
+            setInterval(time, 1000);
         });
     </script>
 @endsection
