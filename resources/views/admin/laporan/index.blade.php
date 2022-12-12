@@ -21,7 +21,6 @@
 
                             <thead>
                                 <tr>
-                                    <th>No</th>
                                     <th>NIK</th>
                                     <th>Nama</th>
                                     <th>Jumlah Langkah</th>
@@ -32,7 +31,6 @@
                             <tbody>
                                 @foreach ($laporan as $lap)
                                     <tr>
-                                        <td>{{ $loop->iteration }}</td>
                                         <td>{{ $lap->nik }}</td>
                                         <td>{{ $lap->nama }}</td>
                                         <td>{{ $lap->langkah }}</td>
