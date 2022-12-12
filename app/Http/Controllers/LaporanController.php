@@ -36,7 +36,7 @@ class LaporanController extends Controller
 
     public function export()
     {
-        return Excel::download(new AdminLaporanExport, 'DataLaporan.xlsx');
+        return Excel::download(new AdminLaporanExport, 'LaporanLangkah.xlsx');
     }
 
 
@@ -64,8 +64,9 @@ class LaporanController extends Controller
         return redirect('/user/data-laporan');
     }
 
+
     public function export_user()
     {
-        return Excel::download(new UsersLaporanExport, 'LaporanUser.xlsx');
+        return Excel::download(new UsersLaporanExport, 'DataLangkah.xlsx');
     }
 }

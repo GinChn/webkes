@@ -3,7 +3,7 @@
 @section('content')
     <div class="content-header">
         <div class="container-fluid">
-            <div class="row mb-2">
+            <div class="row px-2">
                 <div class="col-sm-6">
                     <h1 class="m-0">Data laporan</h1>
                 </div>
@@ -12,12 +12,10 @@
     </div>
 
     <div class="container-fluid">
-        <div class="row">
+        <div class="row px-3">
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        {{-- <a href="/user/input-laporan" class="btn btn-success" data-toggle="modal"
-                            data-target="#modal-lg">Tambah Data</a> --}}
                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-xl">
                             Tambah Data
                         </button>
@@ -52,7 +50,7 @@
                                                 height="50px" width="50px">
                                         </td>
                                         <td>
-                                            <a href="#" class="btn btn-danger hapus"
+                                            <a href="#" class="btn btn-danger btn-sm hapus"
                                                 data-id="{{ $lap->id_laporan }}">Hapus</a>
                                         </td>
                                     </tr>
@@ -130,10 +128,8 @@
     </div>
 @endsection
 
-@section('foot')
+@section('script')
     <script src="{{ asset('AdminLTE/plugins/bs-custom-file-input/bs-custom-file-input.min.js') }}"></script>
-    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.9.6/lottie.min.js"></script> --}}
-    {{-- <script src="https://code.jquery.com/jquery-3.6.1.slim.js" integrity="sha256-tXm+sa1uzsbFnbXt8GJqsgi2Tw+m4BLGDof6eUPjbtk=" crossorigin="anonymous"></script> --}}
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         $(function() {

@@ -3,7 +3,7 @@
 @section('content')
     <div class="content-header">
         <div class="container-fluid">
-            <div class="row mb-2">
+            <div class="row px-2">
                 <div class="col-sm-6">
                     <h1 class="m-0">Detail Laporan</h1>
                 </div>
@@ -20,19 +20,19 @@
                         <table class="table table-bordered table-striped">
                             <thead>
                                 <tr>
-                                    <th>Tanggal</th>
                                     <th>NIK</th>
                                     <th>Nama</th>
                                     <th>Jumlah Langkah</th>
+                                    <th>Tanggal</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($laporan as $lap)
                                     <tr>
-                                        <td>{{ date('d F Y', strtotime($lap->created_at)) }}</td>
                                         <td>{{ $lap->nik }}</td>
                                         <td>{{ $lap->nama }}</td>
                                         <td>{{ $lap->langkah }}</td>
+                                        <td>{{ date('d F Y', strtotime($lap->created_at)) }}</td>
                                     </tr>
                                 @endforeach
                             </tbody>
@@ -121,6 +121,6 @@
         <!-- /.col -->
     </div>
     <div class="mx-4">
-    <a href="/admin/data-laporan" class="btn btn-danger btn-block " style="margin-bottom: 10px;">Close</a>
+        <a href="/admin/data-laporan" class="btn btn-danger btn-block " style="margin-bottom: 10px;">Close</a>
     </div>
 @endsection
