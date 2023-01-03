@@ -1,11 +1,17 @@
 @extends('user.layout')
 
 @section('content')
+    @if (Session::has('alert'))
+        @foreach (Session::get('alert') as $notif)
+            <div class="alert alert-{{ $notif['type'] }}">{{ $notif['text'] }}</div>
+        @endforeach
+    @endif
+
     <div class="content-header">
         <div class="container-fluid">
             <div class="row px-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Data laporan</h1>
+                    <h1 class="m-0">Laporan Langkah</h1>
                 </div>
             </div>
         </div>
@@ -16,9 +22,13 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-xl">
-                            Tambah Data
-                        </button>
+                        @if ($visible)
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-xl">
+                                Tambah Data
+                            </button>
+                        @else
+                            <code><b>Kamu sudah menambahkan data hari ini, Tanggal {{ $last_date }}</b></code><br />
+                        @endif
                         <a href="{{ route('export') }}" class="btn btn-success">Excel</a>
                     </div>
                     <div class="card-body">
@@ -28,8 +38,6 @@
                                     <th>Tanggal</th>
                                     <th>Jumlah Langkah</th>
                                     <th>Foto Langkah</th>
-                                    <th>Foto Selfie Sebelum</th>
-                                    <th>Foto Selfie Sesudah</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
@@ -42,21 +50,16 @@
                                             <img src="{{ asset('foto/bukti/' . $lap->bukti_langkah) }}" alt=""
                                                 height="50px" width="50px">
                                         </td>
+
                                         <td>
-                                            <img src="{{ asset('foto/sebelum/' . $lap->selfie_sebelum) }}" alt=""
-                                                height="50px" width="50px">
-                                        </td>
-                                        <td> <img src="{{ asset('foto/sesudah/' . $lap->selfie_sesudah) }}" alt=""
-                                                height="50px" width="50px">
-                                        </td>
-                                        <td>
+                                            <a href="/user/detail-laporanuser/{{ $lap->id_laporan }}"
+                                                class="btn btn-info btn-sm">Detail</a>
                                             <a href="#" class="btn btn-danger btn-sm hapus"
                                                 data-id="{{ $lap->id_laporan }}">Hapus</a>
                                         </td>
                                     </tr>
                                 @endforeach
                             </tbody>
-
                         </table>
                     </div>
                 </div>
@@ -91,24 +94,6 @@
                             </div>
                             <div class="custom-file">
                                 <input type="file" class="custom-file-input" name="photo_bukti">
-                                <label class="custom-file-label">Pilih Photo</label>
-                            </div>
-                        </div>
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend"><span class="input-group-text">Upload Foto Selfie
-                                    Sebelum</span>
-                            </div>
-                            <div class="custom-file">
-                                <input type="file" class="custom-file-input" name="photo_sebelum">
-                                <label class="custom-file-label">Pilih Photo</label>
-                            </div>
-                        </div>
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend"><span class="input-group-text">Upload Foto Selfie
-                                    Sesudah</span>
-                            </div>
-                            <div class="custom-file">
-                                <input type="file" class="custom-file-input" name="photo_sesudah">
                                 <label class="custom-file-label">Pilih Photo</label>
                             </div>
                         </div>

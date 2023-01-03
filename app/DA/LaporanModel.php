@@ -22,7 +22,7 @@ class LaporanModel extends Model
     {
         return DB::table('laporan')
             ->join('users', 'laporan.nik', '=', 'users.nik')
-            ->select('users.nik', 'users.nama', 'laporan.langkah', 'laporan.id_laporan', 'laporan.created_at', 'laporan.bukti_langkah', 'laporan.selfie_sebelum', 'laporan.selfie_sesudah')
+            ->select('users.nik', 'users.nama', 'laporan.langkah', 'laporan.id_laporan', 'laporan.created_at', 'laporan.bukti_langkah')
             ->where('id_laporan', $id_laporan)
             ->get();
     }
@@ -33,7 +33,7 @@ class LaporanModel extends Model
     {
         return DB::table('laporan')
             ->join('users', 'laporan.nik', '=', 'users.nik')
-            ->select('users.nik', 'users.nama', 'laporan.langkah', 'laporan.id_laporan', 'laporan.created_at', 'laporan.bukti_langkah', 'laporan.selfie_sebelum', 'laporan.selfie_sesudah')
+            ->select('users.nik', 'users.nama', 'laporan.langkah', 'laporan.id_laporan', 'laporan.created_at', 'laporan.bukti_langkah')
             ->where('laporan.nik', session('auth')->nik)
             ->get();
     }
@@ -46,26 +46,22 @@ class LaporanModel extends Model
         $name_bukti = session('auth')->nik . $tanggal_bukti . '.' . $file_bukti->getClientOriginalExtension();
         $req->file('photo_bukti')->move(public_path('/foto/bukti'), $name_bukti);
 
-        $file_sebelum = $req->file('photo_sebelum');
-        $tanggal_sebelum = new \DateTime();
-        $tanggal_sebelum = $tanggal_sebelum->format('d F Y');
-        $name_sebelum = session('auth')->nik . $tanggal_sebelum . '.' . $file_sebelum->getClientOriginalExtension();
-        $req->file('photo_sebelum')->move(public_path('/foto/sebelum'), $name_sebelum);
-
-        $file_sesudah = $req->file('photo_sesudah');
-        $tanggal_sesudah = new \DateTime();
-        $tanggal_sesudah = $tanggal_sesudah->format('d F Y');
-        $name_sesudah = session('auth')->nik . $tanggal_sesudah . '.' . $file_sesudah->getClientOriginalExtension();
-        $req->file('photo_sesudah')->move(public_path('/foto/sesudah'), $name_sesudah);
 
         DB::table('laporan')->insert([
             'nik' => session('auth')->nik,
             'langkah' => $req->input('jumlah_langkah'),
             'created_at' => new \DateTime(),
             'bukti_langkah' => $name_bukti,
-            'selfie_sebelum' => $name_sebelum,
-            'selfie_sesudah' => $name_sesudah,
         ]);
+    }
+
+    public static function detail_laporanuser($id_laporan)
+    {
+        return DB::table('laporan')
+            ->join('users', 'laporan.nik', '=', 'users.nik')
+            ->select('users.nik', 'users.nama', 'laporan.langkah', 'laporan.id_laporan', 'laporan.created_at', 'laporan.bukti_langkah')
+            ->where('id_laporan', $id_laporan)
+            ->get();
     }
 
     public static function user_export()

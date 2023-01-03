@@ -53,6 +53,7 @@ Route::group(['middleware' => 'login'], function () {
 
             Route::get('data-laporan', 'LaporanController@user_laporan');
             Route::post('data-laporan', 'LaporanController@user_simpanlaporan');
+            Route::get('detail-laporanuser/{id_laporan}', 'LaporanController@detail_laporanuser');
             Route::get('hapus-data/{id_laporan}', 'LaporanController@user_hapuslaporan');
             Route::get('lap-excel', 'LaporanController@export_user')->name('export');
 

@@ -112,7 +112,7 @@
                                 class="nav-link {{ $title === 'Data Laporan' ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-clipboard-list"></i>
                                 <p>
-                                    Data Laporan
+                                    Laporan Langkah
                                 </p>
                             </a>
                         </li>

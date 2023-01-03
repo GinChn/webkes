@@ -5,7 +5,7 @@
         <div class="container-fluid">
             <div class="row px-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Data Laporan</h1>
+                    <h1 class="m-0">Laporan Langkah</h1>
                 </div>
             </div>
         </div>

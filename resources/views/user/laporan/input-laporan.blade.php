@@ -29,25 +29,6 @@
                                             <label class="custom-file-label">Pilih Photo</label>
                                         </div>
                                     </div>
-                                    <div class="input-group mb-3">
-                                        <div class="input-group-prepend"><span class="input-group-text">Upload Foto Selfie
-                                                Sebelum</span>
-                                        </div>
-                                        <div class="custom-file">
-                                            <input type="file" class="custom-file-input" name="photo_sebelum">
-                                            <label class="custom-file-label">Pilih Photo</label>
-                                        </div>
-                                    </div>
-                                    <div class="input-group mb-3">
-                                        <div class="input-group-prepend"><span class="input-group-text">Upload Foto Selfie
-                                                Sesudah</span>
-                                        </div>
-                                        <div class="custom-file">
-                                            <input type="file" class="custom-file-input" name="photo_sesudah">
-                                            <label class="custom-file-label">Pilih Photo</label>
-                                        </div>
-                                    </div>
-
                                     <div class="form-group row">
                                         <div class="col-sm-10">
                                             <button type="submit" class="btn btn-success">Simpan</button>

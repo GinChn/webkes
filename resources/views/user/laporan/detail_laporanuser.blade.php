@@ -1,16 +1,15 @@
-@extends('admin.layout')
+@extends('user.layout')
 
 @section('content')
     <div class="content-header">
         <div class="container-fluid">
             <div class="row px-2">
-                <div class="col-sm-6">
+                <div class="col-sm-8">
                     <h1 class="m-0">Detail</h1>
                 </div>
             </div>
         </div>
     </div>
-
 
     <div class="row px-4">
         <div class="col-md-8">
@@ -84,7 +83,7 @@
         </div>
         <!-- /.col -->
         <div class="col-md-12">
-            <a href="/admin/data-laporan" class="btn btn-danger btn-block ">Close</a>
+            <a href="/user/data-laporan" class="btn btn-danger btn-block ">Close</a>
         </div>
     </div>
 @endsection
