@@ -22,7 +22,7 @@ Route::group(['middleware' => 'login'], function () {
         Route::prefix('admin')->group(function () {
             //url: /admin/
             Route::get('user-grafik/{id}', 'DashboardController@user_grafik');
-            Route::get('detail-grafik', 'DashboardController@dashboard_grafik');
+            // Route::get('detail-grafik', 'DashboardController@dashboard_grafik');
             Route::get('profile', 'ProfileController@profile');
             //url: /admin/profile
             Route::get('edit-profile', 'ProfileController@edit_profile');

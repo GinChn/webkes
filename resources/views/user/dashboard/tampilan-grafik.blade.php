@@ -281,7 +281,7 @@
 
                 Toast.fire({
                     icon: 'warning',
-                    title: 'Olahraga cuk!'
+                    title: 'Kok kamu belum melakukan olahraga akhir-akhir ini, ya? Yuk olahraga dan masukan laporan harian kamu!'
                 })
             }
 
