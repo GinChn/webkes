@@ -1,6 +1,11 @@
 @extends('user.layout')
 
 @section('content')
+@if(Session::has('alert'))
+@foreach(Session::get('alert') as $notif)
+<div class="alert alert-{{ $notif['type'] }}">{{ $notif['text'] }}</div>
+@endforeach
+@endif
 
 <div class="content-header">
     <div class="container-fluid">
@@ -140,17 +145,6 @@
                 timer: 1500
             })
         }
-
-
-        // document.getElementById('container').onclick = function () {
-        //     var animation = bodymovin.loadAnimation({
-        //     container: document.getElementById('container'),
-        //     path: "https://assets7.lottiefiles.com/private_files/lf30_wafptztg.json",
-        //     renderer: 'svg',
-        //     loop: false,
-        //     autoplay: true,
-        // });
-        // }
     })
 </script>
 

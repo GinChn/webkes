@@ -150,9 +150,9 @@
         </div>
         <!-- /.content-wrapper -->
         <footer class="main-footer">
-            <strong>Copyright &copy; POLITEKNIK NEGERI BANJARMASIN</strong>
+            <strong>Copyright &copy; TELKOM AKSES BANJARMASIN</strong>
             <div class="float-right d-none d-sm-inline-block">
-                Teknik Informatika
+                TA
             </div>
         </footer>
 

@@ -34,10 +34,17 @@ class BmiModel extends Model
         return DB::table('bmi')->insert($hasilakhir);
     }
 
+    public static function validuser($nik){        
+        return DB::table('bmi')->where([
+            ['nik', $nik],
+            [DB::raw('date(created_at)'),  date('Y-m-d')]
+        ])->first();
+    }
+
     public static function detail_bmi($id_bmi){
         return DB::table('bmi')
         ->join('users', 'bmi.nik', '=', 'users.nik')
-        ->select('users.nama', 'bmi.berat_badan', 'bmi.tinggi_badan', 'bmi.hasil_bmr', 'bmi.hasil_bmi','bmi.keterangan', 'bmi.created_at')
+        ->select('users.nama', 'bmi.berat_badan', 'bmi.tinggi_badan', 'bmi.hasil_bmr', 'bmi.hasil_bmi','bmi.keterangan', 'bmi.ideal', 'bmi.created_at')
         ->where('id_bmi', $id_bmi)
         ->get();
     }

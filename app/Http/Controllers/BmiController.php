@@ -29,6 +29,7 @@ class BmiController extends Controller
     public function simpan_bmi(Request $req)
     {
         $nik = $req->input('nik');
+        $cekdata = BmiModel::validuser($nik);
         $jk = $req->input('jk');
         $usia = $req->input('usia');
         $bb = $req->input('bb');
@@ -37,6 +38,8 @@ class BmiController extends Controller
         $hasil_bmi = $bb / ($tbhasil * $tbhasil);
         $bmr_wanita = 655 + (9.6 * $bb) + (1.8 * $tb) - (4.7 * $usia);
         $bmr_pria = 66 + (13.7 * $bb) + (5 * $tb) - (6.8 * $usia);
+        $ideal_pr = ($tb - 100) - ((($tb - 100) * 15) / 100);
+        $ideal_lk = ($tb - 100) - ((($tb - 100) * 10) / 100);
 
         // dd($nik, $bb, $tb, $tbhasil, $hasil);
     // =============== Perhitungan BMI ====================== //
@@ -50,13 +53,14 @@ class BmiController extends Controller
         $keterangan = 'Gemuk';
     } elseif ($hasil_bmi >= 27) {
         $keterangan = 'Obesitas';
-    }
+    } 
 
     // =============== Perhitungan BMR ====================== //
-    if ($jk = 'Perempuan') {
+    if ($jk == 'Perempuan') {
+        $ideal = $ideal_pr;
         $hasil_bmr = $bmr_wanita;
-    }
-    if ($jk = 'Laki-laki') {
+    } elseif ($jk == 'Laki-laki') {
+        $ideal = $ideal_lk;
         $hasil_bmr = $bmr_pria;
     }
 
@@ -69,10 +73,15 @@ class BmiController extends Controller
             'tinggi_badan' => $tb,
             'hasil_bmi' => $hasil_bmi,
             'keterangan' => $keterangan,
+            'ideal' => $ideal,
             'hasil_bmr' => $hasil_bmr,
         ];
 
         // =============== Kirim data ke model ====================== //
+        if($cekdata){
+            return back()->with('alert', [["type"=>'danger', 'text'=>'Maaf, Anda Tidak Bisa Input Lebih Dari Sekali Dalam Sehari']]);
+        }
+        
         BmiModel::simpan_bmi($hasilakhir);
         return redirect('/user/bmi');
     }

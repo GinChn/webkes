@@ -42,6 +42,10 @@
                         <input type="text" class="form-control" value="{{ $item->keterangan }}" readonly>
                     </div>
                     <div class="form-group">
+                        <label>Berat Badan Ideal</label>
+                        <input type="text" class="form-control" value="{{ number_format((float)$item->ideal, 1, '.', '') }} Kg" readonly>
+                    </div>
+                    <div class="form-group">
                         <label>Tanggal</label>
                         <input type="text" class="form-control" value="{{ date('d F Y', strtotime($item->created_at)) }}" readonly>
                     </div>
@@ -82,23 +86,23 @@
                                 @foreach ($bmi as $item)
                                 <tr>
                                     <td>Tidak pernah atau sangat jarang berolahraga</td>
-                                    <td>{{ number_format((int)$item->hasil_bmr * 1.2) }} kcal</td>
+                                    <td>{{ number_format((int)$item->hasil_bmr * 1.2) }} kkal</td>
                                 </tr>
                                 <tr>
                                     <td>Berolahraga ringan 1-3 hari seminggu</td>
-                                    <td>{{ number_format((int)$item->hasil_bmr * 1.375) }} kcal</td>
+                                    <td>{{ number_format((int)$item->hasil_bmr * 1.375) }} kkal</td>
                                 </tr>
                                 <tr>
                                     <td>Berolahraga intensitas sedang 3-5 hari seminggu</td>
-                                    <td>{{ number_format((int)$item->hasil_bmr * 1.55) }} kcal</td>
+                                    <td>{{ number_format((int)$item->hasil_bmr * 1.55) }} kkal</td>
                                 </tr>
                                 <tr>
                                     <td>Berolahraga intensitas berat 6-7 hari seminggu</td>
-                                    <td>{{ number_format((int)$item->hasil_bmr * 1.725) }} kcal</td>
+                                    <td>{{ number_format((int)$item->hasil_bmr * 1.725) }} kkal</td>
                                 </tr>
                                 <tr>
                                     <td>Berolahraga intensitas sangat berat 6-7 hari seminggu atau bekerja di bidang yang membutuhkan stamina dan fisik yang kuat</td>
-                                    <td>{{ number_format((int)$item->hasil_bmr * 1.9) }} kcal</td>
+                                    <td>{{ number_format((int)$item->hasil_bmr * 1.9) }} kkal</td>
                                 </tr>
                                 @endforeach
                             </tbody>
