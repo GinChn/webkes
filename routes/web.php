@@ -40,6 +40,9 @@ Route::group(['middleware' => 'login'], function () {
             Route::get('hapus-user/{nik}', 'RegistrasiController@hapus_user');
 
             Route::get('bmi', 'BmiController@bmi');
+            Route::get('detail-bmi/{id_bmi}', 'BmiController@admin_detail_bmi');
+            Route::get('hapus-bmi/{id_bmi}', 'BmiController@hapus_bmi');
+            Route::get('export-excel', 'BmiController@export_bmi')->name('export-bmi');
         });
     });
 
@@ -60,7 +63,7 @@ Route::group(['middleware' => 'login'], function () {
             Route::get('bmi', 'BmiController@user_bmi');
             Route::post('bmi', 'BmiController@simpan_bmi');
             Route::get('detail-bmi/{id_bmi}', 'BmiController@detail_bmi');
-            Route::get('hapus-bmi/{id_bmi}', 'BmiController@hapus_bmi');
+            // Route::get('hapus-bmi/{id_bmi}', 'BmiController@hapus_bmi');
         });
     });
 });

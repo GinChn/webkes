@@ -11,7 +11,7 @@ class BmiModel extends Model
     public static function bmi(){
         return DB::table('bmi')
         ->join('users', 'bmi.nik', '=', 'users.nik')
-        ->select('bmi.id_bmi', 'users.nama', 'bmi.berat_badan', 'bmi.tinggi_badan', 'bmi.hasil_bmi','bmi.keterangan', 'bmi.created_at')
+        ->select('bmi.id_bmi', 'bmi.nik', 'users.nama', 'bmi.berat_badan', 'bmi.tinggi_badan', 'bmi.keterangan', 'bmi.created_at', 'bmi.ideal')
         ->get();
     }
 

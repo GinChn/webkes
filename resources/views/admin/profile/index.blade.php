@@ -15,7 +15,7 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-3">
-            <div class="card card-primary card-outline">
+            <div class="card card-danger card-outline">
                 <div class="card-body box-profile">
                     <div class="text-center">
                         <img class="profile-user-img img-fluid img-circle" src="/AdminLTE/dist/img/user4-128x128.jpg" alt="User profile picture">
@@ -26,7 +26,7 @@
             </div>
         </div>
         <div class="col-md-9">
-            <div class="card card-primary">
+            <div class="card card-danger">
                 <div class="card-header">
                     <h3 class="card-title">Data Profile</h3>
                 </div>
@@ -41,10 +41,10 @@
                     <p class="text-muted">{{ $profile->jenis_kelamin }}</p>
                     <hr>
                     <strong>Tanggal Lahir</strong>
-                    <p class="text-muted">{{ $profile->tgl_lahir }}</p>
+                    <p class="text-muted">{{ date('d F Y', strtotime($profile->tgl_lahir)) }}</p>
                     <hr>
                     <strong>Usia</strong>
-                    <p class="text-muted">{{ $profile->usia }}</p>
+                    <p class="text-muted">{{ $profile->usia }} Tahun</p>
                 </div>
             </div>
         </div>

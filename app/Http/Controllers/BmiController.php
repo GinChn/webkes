@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\DA\BmiModel;
+use App\Exports\BmiExport;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\DB;
+use Maatwebsite\Excel\Facades\Excel;
 
 class BmiController extends Controller
 {
@@ -15,6 +17,26 @@ class BmiController extends Controller
         return view('admin.bmi.index', compact('bmi'), [
             "title" => "BMI"
         ]);
+    }
+
+    
+	public function admin_detail_bmi($id_bmi)
+	{
+		$bmi = BmiModel::detail_bmi($id_bmi);
+        return view('admin.bmi.detail-bmi', compact('bmi'), [
+            "title" => "Detail"
+        ]);
+	}
+
+    public function hapus_bmi($id_bmi)
+    {
+        DB::table('bmi')->where('id_bmi', $id_bmi)->delete();
+        return redirect('/admin/bmi');
+    }
+
+    public function export_bmi()
+    {
+        return Excel::download(new BmiExport, 'Data BMI Karyawan.xlsx');
     }
 
     //===========================USer======================//
@@ -79,11 +101,11 @@ class BmiController extends Controller
 
         // =============== Kirim data ke model ====================== //
         if($cekdata){
-            return back()->with('alert', [["type"=>'danger', 'text'=>'Maaf, Anda Tidak Bisa Input Lebih Dari Sekali Dalam Sehari']]);
+            return back()->with('gagal', 'Maaf, Anda Hanya Bisa Input Sekali Dalam Sehari. Coba Lagi Besok');
         }
         
         BmiModel::simpan_bmi($hasilakhir);
-        return redirect('/user/bmi');
+        return redirect('/user/bmi')->with('sukses', 'Data Berhasil Tersimpan');
     }
 
     public function detail_bmi($id_bmi){
@@ -91,11 +113,5 @@ class BmiController extends Controller
         return view('user.bmi.detail-bmi', compact('bmi'), [
             "title" => "Detail"
         ]);
-    }
-
-    public function hapus_bmi($id_bmi)
-    {
-        DB::table('bmi')->where('id_bmi', $id_bmi)->delete();
-        return redirect('/user/bmi');
     }
 }

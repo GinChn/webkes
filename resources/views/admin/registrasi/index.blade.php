@@ -16,7 +16,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <a href="/admin/tambah-user" class="btn btn-success">Tambah User</a>
+                        <a href="/admin/tambah-user" class="btn btn-primary">Tambah User</a>
                     </div>
                     <div class="card-body">
                         <table id="table2" class="table table-bordered table-striped">
@@ -25,6 +25,7 @@
                                     <th>NIK</th>
                                     <th>Nama</th>
                                     <th>Level</th>
+                                    <th>Tanggal Registrasi</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
@@ -34,6 +35,7 @@
                                         <td>{{ $item->nik }}</td>
                                         <td>{{ $item->nama }}</td>
                                         <td>{{ $item->level_name }}</td>
+                                        <td>{{ $item->created_at }}</td>
                                         <td>
                                             <a href="/admin/hapus-user/{{ $item->nik }}"
                                                 class="btn-sm btn-danger">Hapus</a>

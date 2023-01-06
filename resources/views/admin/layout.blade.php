@@ -59,7 +59,7 @@
                         <span class="d-none d-md-inline">{{ session('auth')->nama }}</span>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                        <li class="user-header bg-primary">
+                        <li class="user-header bg-danger">
                             <img src="{{ asset('AdminLTE/dist/img/user2-160x160.jpg') }}"
                                 class="img-circle elevation-2" alt="User Image">
                             <p>

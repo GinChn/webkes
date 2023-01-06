@@ -17,7 +17,7 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-12">
-            <div class="card card-primary">
+            <div class="card card-danger">
                 <div class="card-header">
                     <h3 class="card-title">Edit Profile</h3>
                 </div>
@@ -45,10 +45,6 @@
                             <div class="input-group">
                                 <input type="date" name="tl" class="form-control" data-inputmask-alias="datetime" data-inputmask-inputformat="dd/mm/yyyy" data-mask value="{{ $profile->tgl_lahir }}">
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Usia</label>
-                            <input type="text" name="usia" class="form-control" placeholder="Masukkan Usia" value="{{ $profile->usia }}">
                         </div>
                     </div>
                     <div class="card-footer">

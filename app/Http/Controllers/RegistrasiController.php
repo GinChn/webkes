@@ -13,9 +13,10 @@ class RegistrasiController extends Controller
     {
         $user = DB::table('users')
             ->join('level', 'users.id_level', '=', 'level.id_level')
-            ->select('users.nik', 'users.nama', 'level.level_name')
+            ->select('users.nik', 'users.nama', 'level.level_name', 'users.created_at')
             ->get();
-        return view('admin.registrasi.index', compact('user'),
+            
+            return view('admin.registrasi.index', compact('user'),
             [
                 "title" => "Registrasi"
             ]

@@ -1,11 +1,6 @@
 @extends('user.layout')
 
 @section('content')
-@if(Session::has('alert'))
-@foreach(Session::get('alert') as $notif)
-<div class="alert alert-{{ $notif['type'] }}">{{ $notif['text'] }}</div>
-@endforeach
-@endif
 
 <div class="content-header">
     <div class="container-fluid">
@@ -24,8 +19,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    {{-- <a href="/user/tambah-bmi" class="btn btn-success">Tambah BMI</a> --}}
-                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-default">
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-default">
                         Tambah BMI
                     </button>
                 </div>
@@ -51,7 +45,6 @@
                                 <td>{{ $row->keterangan }}</td>
                                 <td>
                                     <a href="/user/detail-bmi/{{ $row->id_bmi }}" class="btn-sm btn-warning">Detail</a>
-                                    <a href="#" class="btn-sm btn-danger delete" data-id="{{ $row->id_bmi }}">Hapus</a>
                                 </td>
                             </tr>
                             @endforeach
@@ -100,7 +93,7 @@
                     </div>
                     <div class="modal-footer justify-content-between">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
-                        <button type="submit" class="btn btn-primary" id="save">Simpan</button>
+                        <button type="submit" class="btn btn-primary">Simpan</button>
                     </div>
                 </form>
             </div>
@@ -108,44 +101,30 @@
     </div>
 </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.9.6/lottie.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.6.1.slim.js" integrity="sha256-tXm+sa1uzsbFnbXt8GJqsgi2Tw+m4BLGDof6eUPjbtk=" crossorigin="anonymous"></script>
+@endsection
+
+@section('script')
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
-    $(function(){
-        $('.delete').click( function(){
-            var bmiid = $(this).attr('data-id');
-            Swal.fire({
-            title: 'Yakin?',
-            text: "Hapus data ini",
-            icon: 'warning',
-            showCancelButton: true,
-            showConfirmButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Ya, hapus!'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                window.location = "hapus-bmi/"+bmiid+""
-                Swal.fire(
-                'Terhapus!',
-                'Data berhasil terhapus',
-                'success'
-                )
-            }
-            })
+    $(function() {
+        var Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 3000
+    });
+    @if(Session::has('sukses'))
+    Toast.fire({
+            icon: 'success',
+            title: '{{ Session::get('sukses') }}'
         })
-
-        document.getElementById('save').onclick = function () {
-            Swal.fire({
-                position: 'center',
-                icon: 'success',
-                title: 'Data berhasil tersimpan',
-                showConfirmButton: false,
-                timer: 1500
-            })
-        }
-    })
+    @endif
+    @if(Session::has('gagal'))
+    Toast.fire({
+            icon: 'error',
+            title: '{{ Session::get('gagal') }}'
+        })
+    @endif
+});
 </script>
-
 @endsection
