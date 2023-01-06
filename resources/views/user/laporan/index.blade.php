@@ -53,7 +53,7 @@
 
                                         <td>
                                             <a href="/user/detail-laporanuser/{{ $lap->id_laporan }}"
-                                                class="btn btn-info btn-sm">Detail</a>
+                                                class="btn btn-warning btn-sm">Detail</a>
                                             <a href="#" class="btn btn-danger btn-sm hapus"
                                                 data-id="{{ $lap->id_laporan }}">Hapus</a>
                                         </td>

@@ -37,7 +37,7 @@
                                         <td>{{ date('d F Y', strtotime($lap->created_at)) }}</td>
                                         <td>
                                             <a href="/admin/detail-laporan/{{ $lap->id_laporan }}"
-                                                class="btn btn-info btn-sm">Detail</a>
+                                                class="btn btn-warning btn-sm">Detail</a>
                                         </td>
                                     </tr>
                                 @endforeach
