@@ -17,15 +17,16 @@
                                     <div class="form-group row">
                                         <label class="col-sm-2 col-form-label">Jumlah Langkah</label>
                                         <div class="col-sm-10">
-                                            <input type="text" class="form-control" placeholder="Jumlah Langkah"
-                                                name="jumlah_langkah">
+                                            <input type="text" class="form-control" name="jumlah_langkah"
+                                                placeholder="Jumlah Langkah" required>
                                         </div>
                                     </div>
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend"><span class="input-group-text">Upload Bukti</span>
                                         </div>
                                         <div class="custom-file">
-                                            <input type="file" class="custom-file-input" name="photo_bukti">
+                                            <input type="file" class="custom-file-input" name="photo_bukti"
+                                                placeholder="Upload Bukti" required>
                                             <label class="custom-file-label">Pilih Photo</label>
                                         </div>
                                     </div>

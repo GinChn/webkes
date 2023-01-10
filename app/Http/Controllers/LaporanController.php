@@ -64,9 +64,15 @@ class LaporanController extends Controller
 
     public function user_simpanlaporan(request $req)
     {
-        LaporanModel::simpanlaporan($req);
-        return redirect('/user/data-laporan');
+        if (LaporanModel::simpanlaporan($req)) {
+            return redirect('/user/laporan')->with('sukses', 'Data Berhasil Tersimpan');
+        } else {
+            return redirect('/user/data-laporan');
+        }
     }
+
+
+
 
     public function detail_laporanuser($id_laporan)
     {
