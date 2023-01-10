@@ -37,8 +37,7 @@
                                         <td>{{ $item->level_name }}</td>
                                         <td>{{ $item->created_at }}</td>
                                         <td>
-                                            <a href="/admin/hapus-user/{{ $item->nik }}"
-                                                class="btn-sm btn-danger">Hapus</a>
+                                            <a href="#" class="btn-sm btn-danger delete" data-id="{{ $item->nik }}">Hapus</a>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -49,4 +48,47 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('script')
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    $(function(){
+        $('.delete').click( function(){
+            var nik = $(this).attr('data-id');
+            Swal.fire({
+            title: 'Yakin?',
+            text: "Hapus User ini",
+            icon: 'warning',
+            showCancelButton: true,
+            showConfirmButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Ya, hapus!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location = "hapus-user/"+nik+""
+                Swal.fire(
+                'Terhapus!',
+                'Data berhasil terhapus',
+                'success'
+                )
+            }
+        })
+    })
+
+    var Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 3000
+    });
+    @if(Session::has('sukses'))
+    Toast.fire({
+            icon: 'success',
+            title: '{{ Session::get('sukses') }}'
+        })
+    @endif
+    })
+</script>
 @endsection

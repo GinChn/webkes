@@ -44,7 +44,7 @@ class RegistrasiController extends Controller
 
         RegistrasiModel::simpan_user($req);
 
-        return redirect('/admin/registrasi');
+        return redirect('/admin/registrasi')->with('sukses', 'Data Berhasil Tersimpan');
     }
 
     public function hapus_user($nik)
